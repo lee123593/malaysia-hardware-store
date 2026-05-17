@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
 import { verifyAdminToken } from "@/lib/auth";
+import { getProducts, createProduct, updateProduct, deleteProduct } from "@/lib/github-db";
 
 async function checkAuth(request: NextRequest) {
   const auth = request.headers.get("authorization")?.replace("Bearer ", "");
@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const products = await prisma.product.findMany({ orderBy: { createdAt: "desc" } });
+  const products = await getProducts();
   return NextResponse.json(products);
 }
 
@@ -25,25 +25,29 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json();
-    const product = await prisma.product.create({
-      data: {
-        name: body.name,
-        nameZh: body.nameZh || null,
-        slug: body.slug || body.name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
-        description: body.description || "",
-        descriptionZh: body.descriptionZh || null,
-        price: parseFloat(body.price),
-        costPrice: body.costPrice ? parseFloat(body.costPrice) : null,
-        category: body.category || "tools",
-        categoryZh: body.categoryZh || null,
-        images: body.images || "[]",
-        stock: body.stock ? parseInt(body.stock) : 999,
-        featured: body.featured === true,
-        published: body.published !== false,
-        weight: body.weight ? parseFloat(body.weight) : 0.5,
-        sku: body.sku || `SKU-${Date.now()}`,
-      },
-    });
+    const product = {
+      id: `p${Date.now()}`,
+      name: body.name,
+      nameZh: body.nameZh || null,
+      slug: body.slug || body.name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+      description: body.description || "",
+      descriptionZh: body.descriptionZh || null,
+      price: parseFloat(body.price),
+      costPrice: body.costPrice ? parseFloat(body.costPrice) : null,
+      category: body.category || "tools",
+      categoryZh: body.categoryZh || null,
+      images: body.images || "[]",
+      stock: body.stock ? parseInt(body.stock) : 999,
+      featured: body.featured === true,
+      published: body.published !== false,
+      weight: body.weight ? parseFloat(body.weight) : 0.5,
+      sku: body.sku || `SKU-${Date.now()}`,
+      origin: "China",
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+
+    await createProduct(product);
     return NextResponse.json(product, { status: 201 });
   } catch (error) {
     console.error("Create product error:", error);
@@ -64,27 +68,23 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: "Product ID required" }, { status: 400 });
     }
 
-    const update: Record<string, unknown> = {};
-    if (data.name !== undefined) update.name = data.name;
-    if (data.nameZh !== undefined) update.nameZh = data.nameZh;
-    if (data.description !== undefined) update.description = data.description;
-    if (data.descriptionZh !== undefined) update.descriptionZh = data.descriptionZh;
-    if (data.price !== undefined) update.price = parseFloat(data.price);
-    if (data.costPrice !== undefined) update.costPrice = parseFloat(data.costPrice);
-    if (data.category !== undefined) update.category = data.category;
-    if (data.categoryZh !== undefined) update.categoryZh = data.categoryZh;
-    if (data.images !== undefined) update.images = data.images;
-    if (data.stock !== undefined) update.stock = parseInt(data.stock);
-    if (data.featured !== undefined) update.featured = data.featured;
-    if (data.published !== undefined) update.published = data.published;
-    if (data.weight !== undefined) update.weight = parseFloat(data.weight);
-    if (data.sku !== undefined) update.sku = data.sku;
+    const updates: Record<string, unknown> = { updatedAt: new Date().toISOString() };
+    if (data.name !== undefined) updates.name = data.name;
+    if (data.nameZh !== undefined) updates.nameZh = data.nameZh;
+    if (data.description !== undefined) updates.description = data.description;
+    if (data.descriptionZh !== undefined) updates.descriptionZh = data.descriptionZh;
+    if (data.price !== undefined) updates.price = parseFloat(data.price);
+    if (data.costPrice !== undefined) updates.costPrice = parseFloat(data.costPrice);
+    if (data.category !== undefined) updates.category = data.category;
+    if (data.categoryZh !== undefined) updates.categoryZh = data.categoryZh;
+    if (data.images !== undefined) updates.images = data.images;
+    if (data.stock !== undefined) updates.stock = parseInt(data.stock);
+    if (data.featured !== undefined) updates.featured = data.featured;
+    if (data.published !== undefined) updates.published = data.published;
+    if (data.weight !== undefined) updates.weight = parseFloat(data.weight);
+    if (data.sku !== undefined) updates.sku = data.sku;
 
-    const product = await prisma.product.update({
-      where: { id },
-      data: update,
-    });
-
+    const product = await updateProduct(id, updates);
     return NextResponse.json(product);
   } catch (error) {
     console.error("Update product error:", error);
@@ -104,6 +104,6 @@ export async function DELETE(request: NextRequest) {
     return NextResponse.json({ error: "Product ID required" }, { status: 400 });
   }
 
-  await prisma.product.delete({ where: { id } });
+  await deleteProduct(id);
   return NextResponse.json({ success: true });
 }

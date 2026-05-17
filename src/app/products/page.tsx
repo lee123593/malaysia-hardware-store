@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/db";
+import { getProducts } from "@/lib/github-db";
 import ProductList from "./ProductList";
 
 export const dynamic = "force-static";
@@ -12,28 +12,9 @@ const CATEGORIES: Record<string, string> = {
   accessories: "Accessories & Consumables",
 };
 
-export default async function ProductsPage({
-  searchParams,
-}: {
-  searchParams: { category?: string; sort?: string; q?: string };
-}) {
-  const { category, sort, q } = searchParams;
+export default async function ProductsPage() {
+  const products = await getProducts();
+  const published = products.filter((p: any) => p.published);
 
-  const where: Record<string, unknown> = { published: true };
-  if (category && CATEGORIES[category]) where.category = category;
-  if (q) {
-    where.OR = [
-      { name: { contains: q } },
-      { description: { contains: q } },
-      { sku: { contains: q } },
-    ];
-  }
-
-  let orderBy: Record<string, string> = { createdAt: "desc" };
-  if (sort === "price-asc") orderBy = { price: "asc" };
-  if (sort === "price-desc") orderBy = { price: "desc" };
-
-  const products = await prisma.product.findMany({ where, orderBy });
-
-  return <ProductList products={products} categories={CATEGORIES} currentCategory={category} currentSort={sort} />;
+  return <ProductList products={published} categories={CATEGORIES} currentCategory="" currentSort="" />;
 }

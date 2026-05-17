@@ -1,17 +1,10 @@
-import { prisma } from "@/lib/db";
+import { getProducts } from "@/lib/github-db";
 import HomeClient from "./HomeClient";
 
 export const dynamic = "force-static";
 
-async function getProducts() {
-  return prisma.product.findMany({
-    where: { published: true },
-    orderBy: { createdAt: "desc" },
-    take: 8,
-  });
-}
-
 export default async function HomePage() {
   const products = await getProducts();
-  return <HomeClient products={JSON.parse(JSON.stringify(products))} />;
+  const featured = products.filter((p: any) => p.featured && p.published).slice(0, 8);
+  return <HomeClient products={featured} />;
 }

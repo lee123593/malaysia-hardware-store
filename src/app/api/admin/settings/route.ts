@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
 import { verifyAdminToken } from "@/lib/auth";
-import { invalidateCache } from "@/lib/settings";
+import { getSettings, updateSettings } from "@/lib/github-db";
 
 async function checkAuth(request: NextRequest) {
   const auth = request.headers.get("authorization")?.replace("Bearer ", "");
@@ -15,10 +14,8 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const settings = await prisma.setting.findMany();
-  const result: Record<string, string> = {};
-  for (const s of settings) result[s.key] = s.value;
-  return NextResponse.json(result);
+  const settings = await getSettings();
+  return NextResponse.json(settings);
 }
 
 export async function PUT(request: NextRequest) {
@@ -28,16 +25,7 @@ export async function PUT(request: NextRequest) {
 
   try {
     const body = await request.json();
-
-    for (const [key, value] of Object.entries(body)) {
-      await prisma.setting.upsert({
-        where: { key },
-        update: { value: String(value) },
-        create: { key, value: String(value) },
-      });
-    }
-
-    invalidateCache();
+    await updateSettings(body);
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Update settings error:", error);

@@ -1,14 +1,16 @@
-import { prisma } from "@/lib/db";
+import { getProducts, getProductBySlug } from "@/lib/github-db";
 import { notFound } from "next/navigation";
 import ProductDetail from "./ProductDetail";
 
 export async function generateStaticParams() {
-  const products = await prisma.product.findMany({ select: { slug: true } });
-  return products.map((p) => ({ slug: p.slug }));
+  const products = await getProducts();
+  return products
+    .filter((p: any) => p.published)
+    .map((p: any) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const product = await prisma.product.findUnique({ where: { slug: params.slug } });
+  const product = await getProductBySlug(params.slug);
   if (!product) return { title: "Not Found" };
   return {
     title: `${product.name} — MY Hardware Pro`,
@@ -17,13 +19,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function ProductPage({ params }: { params: { slug: string } }) {
-  const product = await prisma.product.findUnique({ where: { slug: params.slug } });
+  const product = await getProductBySlug(params.slug);
   if (!product) notFound();
 
-  const related = await prisma.product.findMany({
-    where: { category: product.category, id: { not: product.id }, published: true },
-    take: 4,
-  });
+  const allProducts = await getProducts();
+  const related = allProducts
+    .filter((p: any) => p.category === product.category && p.id !== product.id && p.published)
+    .slice(0, 4);
 
   return <ProductDetail product={product} related={related} />;
 }
