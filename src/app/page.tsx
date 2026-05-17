@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/db";
 import HomeClient from "./HomeClient";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 async function getProducts() {
   return prisma.product.findMany({

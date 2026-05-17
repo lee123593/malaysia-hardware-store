@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/db";
 import ProductList from "./ProductList";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 const CATEGORIES: Record<string, string> = {
   "screws-fasteners": "Screws & Fasteners",

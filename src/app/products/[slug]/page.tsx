@@ -2,7 +2,10 @@ import { prisma } from "@/lib/db";
 import { notFound } from "next/navigation";
 import ProductDetail from "./ProductDetail";
 
-export const dynamic = "force-dynamic";
+export async function generateStaticParams() {
+  const products = await prisma.product.findMany({ select: { slug: true } });
+  return products.map((p) => ({ slug: p.slug }));
+}
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const product = await prisma.product.findUnique({ where: { slug: params.slug } });
