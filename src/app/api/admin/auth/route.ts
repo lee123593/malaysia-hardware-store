@@ -12,7 +12,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Username/password verification
-    if (username === process.env.ADMIN_USERNAME || "admin" && password === process.env.ADMIN_PASSWORD || "admin123") {
+    const adminUser = process.env.ADMIN_USERNAME || "admin";
+    const adminPass = process.env.ADMIN_PASSWORD || "admin123";
+    if (username === adminUser && password === adminPass) {
       const token = await createAdminToken(username);
       return NextResponse.json({ token });
     }
