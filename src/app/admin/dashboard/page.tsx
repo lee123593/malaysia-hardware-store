@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { useI18n } from "@/i18n";
 import { formatCurrency, formatDateMalaysia } from "@/lib/utils";
-import { ORDER_STATUS_MAP, ORDER_STATUS_MAP_ZH } from "@/types";
 
 const API = (path: string, opts?: RequestInit) =>
   fetch(path, {
@@ -14,19 +14,27 @@ const API = (path: string, opts?: RequestInit) =>
     },
   });
 
+const CATEGORIES: Record<string, string> = {
+  "screws-fasteners": "Screws & Fasteners",
+  tools: "Hand Tools",
+  "building-hardware": "Building Hardware",
+  "door-window": "Door & Window",
+  "power-tools": "Power Tools",
+  accessories: "Accessories",
+};
+
 export default function AdminDashboard() {
   const router = useRouter();
+  const { t } = useI18n();
   const [tab, setTab] = useState<"products" | "orders" | "settings">("products");
   const [token, setToken] = useState<string | null>(null);
   const [checked, setChecked] = useState(false);
 
-  // Data
   const [products, setProducts] = useState<any[]>([]);
   const [orders, setOrders] = useState<any[]>([]);
   const [settings, setSettings] = useState<Record<string, string>>({});
   const [orderTotal, setOrderTotal] = useState(0);
 
-  // Form
   const [editingProduct, setEditingProduct] = useState<any>(null);
   const [showProductForm, setShowProductForm] = useState(false);
   const [productForm, setProductForm] = useState<any>({});
@@ -34,10 +42,10 @@ export default function AdminDashboard() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    const t = localStorage.getItem("admin_token");
-    setToken(t);
+    const stored = localStorage.getItem("admin_token");
+    setToken(stored);
     setChecked(true);
-    if (!t) router.push("/admin");
+    if (!stored) router.push("/admin");
   }, [router]);
 
   const showMsg = (msg: string) => {
@@ -45,13 +53,11 @@ export default function AdminDashboard() {
     setTimeout(() => setMessage(""), 3000);
   };
 
-  // Products
   const fetchProducts = useCallback(async () => {
     const res = await API("/api/admin/products");
     if (res.ok) setProducts(await res.json());
   }, []);
 
-  // Orders
   const fetchOrders = useCallback(async () => {
     const res = await API("/api/admin/orders");
     if (res.ok) {
@@ -61,7 +67,6 @@ export default function AdminDashboard() {
     }
   }, []);
 
-  // Settings
   const fetchSettings = useCallback(async () => {
     const res = await API("/api/admin/settings");
     if (res.ok) setSettings(await res.json());
@@ -79,7 +84,6 @@ export default function AdminDashboard() {
     router.push("/admin");
   };
 
-  // Product CRUD
   const handleCreateProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     const res = await API("/api/admin/products", {
@@ -87,7 +91,7 @@ export default function AdminDashboard() {
       body: JSON.stringify(productForm),
     });
     if (res.ok) {
-      showMsg("Product created");
+      showMsg(t.admin.productCreated);
       setShowProductForm(false);
       setProductForm({});
       fetchProducts();
@@ -101,7 +105,7 @@ export default function AdminDashboard() {
       body: JSON.stringify(productForm),
     });
     if (res.ok) {
-      showMsg("Product updated");
+      showMsg(t.admin.productUpdated);
       setEditingProduct(null);
       setProductForm({});
       fetchProducts();
@@ -109,9 +113,9 @@ export default function AdminDashboard() {
   };
 
   const handleDeleteProduct = async (id: string) => {
-    if (!confirm("Delete this product?")) return;
+    if (!confirm(t.admin.confirmDelete)) return;
     await API(`/api/admin/products?id=${id}`, { method: "DELETE" });
-    showMsg("Product deleted");
+    showMsg(t.admin.productDeleted);
     fetchProducts();
   };
 
@@ -129,43 +133,42 @@ export default function AdminDashboard() {
     setShowProductForm(true);
   };
 
-  // Order update
   const handleOrderStatus = async (id: string, status: string) => {
     await API("/api/admin/orders", {
       method: "PUT",
       body: JSON.stringify({ id, status }),
     });
-    showMsg(`Order status updated to: ${status}`);
+    showMsg(`${t.admin.orderStatusUpdated}: ${status}`);
     fetchOrders();
   };
 
-  // Settings update
   const handleSettingsSave = async () => {
     await API("/api/admin/settings", {
       method: "PUT",
       body: JSON.stringify(settings),
     });
-    showMsg("Settings saved");
+    showMsg(t.admin.settingsSaved);
   };
 
-  // Export CSV
   const handleExportCSV = () => {
     const header = "Order No,Date,Name,Phone,State,Items,Subtotal,Shipping,Tax,Total,Status\n";
-    const rows = orders.map((o: any) =>
-      [
-        o.orderNo,
-        formatDateMalaysia(o.createdAt),
-        o.customerName,
-        o.customerPhone,
-        o.state,
-        o.items?.length || 0,
-        o.subtotal,
-        o.shippingCost,
-        o.tax,
-        o.total,
-        o.status,
-      ].join(",")
-    ).join("\n");
+    const rows = orders
+      .map((o: any) =>
+        [
+          o.orderNo,
+          formatDateMalaysia(o.createdAt),
+          o.customerName,
+          o.customerPhone,
+          o.state,
+          o.items?.length || 0,
+          o.subtotal,
+          o.shippingCost,
+          o.tax,
+          o.total,
+          o.status,
+        ].join(",")
+      )
+      .join("\n");
 
     const blob = new Blob([header + rows], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
@@ -176,6 +179,8 @@ export default function AdminDashboard() {
     URL.revokeObjectURL(url);
   };
 
+  const statusOpts = t.admin.statusOptions;
+
   if (!checked) return null;
 
   return (
@@ -185,25 +190,26 @@ export default function AdminDashboard() {
         <div className="flex items-center gap-6">
           <h1 className="text-sm font-semibold text-apple-dark">Admin</h1>
           <nav className="flex gap-4 text-sm">
-            {(["products", "orders", "settings"] as const).map((t) => (
+            {(["products", "orders", "settings"] as const).map((tabKey) => (
               <button
-                key={t}
-                onClick={() => setTab(t)}
-                className={`capitalize transition-colors ${
-                  tab === t ? "text-apple-blue font-medium" : "text-apple-text hover:text-apple-dark"
+                key={tabKey}
+                onClick={() => setTab(tabKey)}
+                className={`transition-colors ${
+                  tab === tabKey ? "text-apple-blue font-medium" : "text-apple-text hover:text-apple-dark"
                 }`}
               >
-                {t}
+                {tabKey === "products"
+                  ? t.admin.navProducts
+                  : tabKey === "orders"
+                    ? t.admin.navOrders
+                    : t.admin.navSettings}
               </button>
             ))}
           </nav>
         </div>
         <div className="flex items-center gap-3">
-          <a href="/" target="_blank" className="text-xs text-apple-text hover:text-apple-blue">
-            View Store &rarr;
-          </a>
           <button onClick={handleLogout} className="text-xs text-apple-text hover:text-red-500">
-            Logout
+            {t.admin.logout}
           </button>
         </div>
       </div>
@@ -221,13 +227,17 @@ export default function AdminDashboard() {
           <div>
             <div className="flex items-center justify-between mb-5">
               <h2 className="text-lg font-semibold text-apple-dark">
-                Products ({products.length})
+                {t.admin.productsTitle} ({products.length})
               </h2>
               <button
-                onClick={() => { setEditingProduct(null); setProductForm({}); setShowProductForm(true); }}
+                onClick={() => {
+                  setEditingProduct(null);
+                  setProductForm({});
+                  setShowProductForm(true);
+                }}
                 className="bg-apple-dark text-white text-xs font-medium px-4 py-2 rounded-full hover:bg-black transition-colors"
               >
-                + New Product
+                {t.admin.newProduct}
               </button>
             </div>
 
@@ -236,38 +246,41 @@ export default function AdminDashboard() {
               <div className="fixed inset-0 z-40 bg-black/20 flex items-center justify-center p-5">
                 <div className="bg-white rounded-apple shadow-apple-lg p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
                   <h3 className="font-semibold text-apple-dark mb-4">
-                    {editingProduct ? "Edit Product" : "New Product"}
+                    {editingProduct ? t.admin.editProduct : t.admin.addProduct}
                   </h3>
-                  <form onSubmit={editingProduct ? handleUpdateProduct : handleCreateProduct} className="space-y-3">
+                  <form
+                    onSubmit={editingProduct ? handleUpdateProduct : handleCreateProduct}
+                    className="space-y-3"
+                  >
                     <input
-                      placeholder="Name (EN)"
+                      placeholder={t.admin.nameEn}
                       value={productForm.name || ""}
                       onChange={(e) => setProductForm({ ...productForm, name: e.target.value })}
                       className="w-full px-3 py-2 rounded-lg border border-apple-border text-sm"
                       required
                     />
                     <input
-                      placeholder="Name (中文)"
+                      placeholder={t.admin.nameZh}
                       value={productForm.nameZh || ""}
                       onChange={(e) => setProductForm({ ...productForm, nameZh: e.target.value })}
                       className="w-full px-3 py-2 rounded-lg border border-apple-border text-sm"
                     />
                     <input
-                      placeholder="SKU"
+                      placeholder={t.admin.sku}
                       value={productForm.sku || ""}
                       onChange={(e) => setProductForm({ ...productForm, sku: e.target.value })}
                       className="w-full px-3 py-2 rounded-lg border border-apple-border text-sm"
                       required
                     />
                     <input
-                      placeholder="Slug"
+                      placeholder={t.admin.slug}
                       value={productForm.slug || ""}
                       onChange={(e) => setProductForm({ ...productForm, slug: e.target.value })}
                       className="w-full px-3 py-2 rounded-lg border border-apple-border text-sm"
                     />
                     <div className="grid grid-cols-2 gap-3">
                       <input
-                        placeholder="Price (MYR)"
+                        placeholder={t.admin.price}
                         type="number"
                         step="0.01"
                         value={productForm.price || ""}
@@ -276,7 +289,7 @@ export default function AdminDashboard() {
                         required
                       />
                       <input
-                        placeholder="Cost Price"
+                        placeholder={t.admin.costPrice}
                         type="number"
                         step="0.01"
                         value={productForm.costPrice || ""}
@@ -290,16 +303,15 @@ export default function AdminDashboard() {
                         onChange={(e) => setProductForm({ ...productForm, category: e.target.value })}
                         className="w-full px-3 py-2 rounded-lg border border-apple-border text-sm"
                       >
-                        <option value="">Category</option>
-                        <option value="screws-fasteners">Screws & Fasteners</option>
-                        <option value="tools">Hand Tools</option>
-                        <option value="building-hardware">Building Hardware</option>
-                        <option value="door-window">Door & Window</option>
-                        <option value="power-tools">Power Tools</option>
-                        <option value="accessories">Accessories</option>
+                        <option value="">{t.admin.category}</option>
+                        {Object.entries(CATEGORIES).map(([val, label]) => (
+                          <option key={val} value={val}>
+                            {label}
+                          </option>
+                        ))}
                       </select>
                       <input
-                        placeholder="Weight (kg)"
+                        placeholder={t.admin.weight}
                         type="number"
                         step="0.01"
                         value={productForm.weight || ""}
@@ -308,21 +320,21 @@ export default function AdminDashboard() {
                       />
                     </div>
                     <textarea
-                      placeholder="Description (EN)"
+                      placeholder={t.admin.descriptionEn}
                       value={productForm.description || ""}
                       onChange={(e) => setProductForm({ ...productForm, description: e.target.value })}
                       className="w-full px-3 py-2 rounded-lg border border-apple-border text-sm"
                       rows={2}
                     />
                     <textarea
-                      placeholder="Description (中文)"
+                      placeholder={t.admin.descriptionZh}
                       value={productForm.descriptionZh || ""}
                       onChange={(e) => setProductForm({ ...productForm, descriptionZh: e.target.value })}
                       className="w-full px-3 py-2 rounded-lg border border-apple-border text-sm"
                       rows={2}
                     />
                     <input
-                      placeholder="Images (JSON array)"
+                      placeholder={t.admin.images}
                       value={productForm.images || ""}
                       onChange={(e) => setProductForm({ ...productForm, images: e.target.value })}
                       className="w-full px-3 py-2 rounded-lg border border-apple-border text-sm"
@@ -333,21 +345,24 @@ export default function AdminDashboard() {
                         checked={productForm.featured || false}
                         onChange={(e) => setProductForm({ ...productForm, featured: e.target.checked })}
                       />
-                      Featured
+                      {t.admin.featured}
                     </label>
                     <div className="flex gap-3 pt-2">
                       <button
                         type="submit"
                         className="flex-1 bg-apple-dark text-white text-sm font-medium py-2 rounded-full hover:bg-black transition-colors"
                       >
-                        {editingProduct ? "Update" : "Create"}
+                        {editingProduct ? t.admin.update : t.admin.create}
                       </button>
                       <button
                         type="button"
-                        onClick={() => { setShowProductForm(false); setEditingProduct(null); }}
+                        onClick={() => {
+                          setShowProductForm(false);
+                          setEditingProduct(null);
+                        }}
                         className="flex-1 border border-apple-border text-sm py-2 rounded-full hover:bg-apple-gray transition-colors"
                       >
-                        Cancel
+                        {t.admin.cancel}
                       </button>
                     </div>
                   </form>
@@ -360,12 +375,12 @@ export default function AdminDashboard() {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-apple-border/40 text-apple-text text-xs">
-                    <th className="text-left p-3 font-medium">Product</th>
-                    <th className="text-left p-3 font-medium">SKU</th>
-                    <th className="text-right p-3 font-medium">Price</th>
-                    <th className="text-center p-3 font-medium">Stock</th>
-                    <th className="text-center p-3 font-medium">Published</th>
-                    <th className="text-right p-3 font-medium">Actions</th>
+                    <th className="text-left p-3 font-medium">{t.admin.tableProduct}</th>
+                    <th className="text-left p-3 font-medium">{t.admin.tableSku}</th>
+                    <th className="text-right p-3 font-medium">{t.admin.tablePrice}</th>
+                    <th className="text-center p-3 font-medium">{t.admin.tableStock}</th>
+                    <th className="text-center p-3 font-medium">{t.admin.tablePublished}</th>
+                    <th className="text-right p-3 font-medium">{t.admin.tableActions}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -385,12 +400,22 @@ export default function AdminDashboard() {
                             p.published ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"
                           }`}
                         >
-                          {p.published ? "Yes" : "No"}
+                          {p.published ? t.admin.yes : t.admin.no}
                         </button>
                       </td>
                       <td className="p-3 text-right">
-                        <button onClick={() => startEdit(p)} className="text-xs text-apple-blue mr-2 hover:underline">Edit</button>
-                        <button onClick={() => handleDeleteProduct(p.id)} className="text-xs text-red-500 hover:underline">Delete</button>
+                        <button
+                          onClick={() => startEdit(p)}
+                          className="text-xs text-apple-blue mr-2 hover:underline"
+                        >
+                          {t.admin.edit}
+                        </button>
+                        <button
+                          onClick={() => handleDeleteProduct(p.id)}
+                          className="text-xs text-red-500 hover:underline"
+                        >
+                          {t.admin.delete}
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -405,13 +430,13 @@ export default function AdminDashboard() {
           <div>
             <div className="flex items-center justify-between mb-5">
               <h2 className="text-lg font-semibold text-apple-dark">
-                Orders ({orderTotal})
+                {t.admin.ordersTitle} ({orderTotal})
               </h2>
               <button
                 onClick={handleExportCSV}
                 className="bg-apple-dark text-white text-xs font-medium px-4 py-2 rounded-full hover:bg-black transition-colors"
               >
-                Export CSV
+                {t.admin.exportCSV}
               </button>
             </div>
 
@@ -421,48 +446,58 @@ export default function AdminDashboard() {
                   <div className="flex items-start justify-between mb-3">
                     <div>
                       <span className="font-semibold text-apple-dark text-sm">{o.orderNo}</span>
-                      <span className="text-xs text-apple-text ml-3">{formatDateMalaysia(o.createdAt)}</span>
+                      <span className="text-xs text-apple-text ml-3">
+                        {formatDateMalaysia(o.createdAt)}
+                      </span>
                     </div>
                     <select
                       value={o.status}
                       onChange={(e) => handleOrderStatus(o.id, e.target.value)}
                       className="text-xs px-2 py-1 rounded-full border border-apple-border"
                     >
-                      <option value="pending">Pending Payment</option>
-                      <option value="paid">Paid</option>
-                      <option value="processing">Processing</option>
-                      <option value="shipped_cn">Shipped from China</option>
-                      <option value="in_transit">In Transit</option>
-                      <option value="delivered_my">Delivered</option>
-                      <option value="cancelled">Cancelled</option>
+                      {Object.entries(statusOpts).map(([val, label]) => (
+                        <option key={val} value={val}>
+                          {label}
+                        </option>
+                      ))}
                     </select>
                   </div>
 
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs text-apple-text">
                     <div>
-                      <span className="block text-[10px] uppercase tracking-wider">Customer</span>
+                      <span className="block text-[10px] uppercase tracking-wider">
+                        {t.admin.customer}
+                      </span>
                       {o.customerName} | {o.customerPhone}
                     </div>
                     <div>
-                      <span className="block text-[10px] uppercase tracking-wider">Address</span>
+                      <span className="block text-[10px] uppercase tracking-wider">
+                        {t.admin.address}
+                      </span>
                       {o.address}, {o.city}, {o.state} ({o.region})
                     </div>
                     <div>
-                      <span className="block text-[10px] uppercase tracking-wider">Items</span>
+                      <span className="block text-[10px] uppercase tracking-wider">
+                        {t.admin.items}
+                      </span>
                       {(o.items || []).map((i: any) => `${i.name} x${i.quantity}`).join(", ")}
                     </div>
                     <div>
-                      <span className="block text-[10px] uppercase tracking-wider">Total</span>
-                      {formatCurrency(o.total)}
-                      {" "}
-                      <span className="text-[10px]">(Sub:{formatCurrency(o.subtotal)} Ship:{formatCurrency(o.shippingCost)} Tax:{formatCurrency(o.tax)})</span>
+                      <span className="block text-[10px] uppercase tracking-wider">
+                        {t.admin.total}
+                      </span>
+                      {formatCurrency(o.total)}{" "}
+                      <span className="text-[10px]">
+                        (Sub:{formatCurrency(o.subtotal)} Ship:{formatCurrency(o.shippingCost)}{" "}
+                        Tax:{formatCurrency(o.tax)})
+                      </span>
                     </div>
                   </div>
                 </div>
               ))}
 
               {orders.length === 0 && (
-                <div className="text-center py-12 text-apple-text text-sm">No orders yet</div>
+                <div className="text-center py-12 text-apple-text text-sm">{t.admin.noOrders}</div>
               )}
             </div>
           </div>
@@ -471,18 +506,18 @@ export default function AdminDashboard() {
         {/* SETTINGS TAB */}
         {tab === "settings" && (
           <div>
-            <h2 className="text-lg font-semibold text-apple-dark mb-5">Settings</h2>
+            <h2 className="text-lg font-semibold text-apple-dark mb-5">{t.admin.settingsTitle}</h2>
 
             <div className="bg-white rounded-apple shadow-apple p-5 space-y-4">
               {[
-                { key: "store_name", label: "Store Name" },
-                { key: "store_email", label: "Store Email" },
-                { key: "store_phone", label: "Store Phone" },
-                { key: "sst_rate", label: "SST Rate (e.g. 0.10 = 10%)" },
-                { key: "sst_enabled", label: "SST Enabled (true/false)" },
-                { key: "shipping_west", label: "West MY Shipping (RM)" },
-                { key: "shipping_east", label: "East MY Shipping (RM)" },
-                { key: "free_shipping_min", label: "Free Shipping Min (RM)" },
+                { key: "store_name", label: t.admin.storeName },
+                { key: "store_email", label: t.admin.storeEmail },
+                { key: "store_phone", label: t.admin.storePhone },
+                { key: "sst_rate", label: t.admin.sstRate },
+                { key: "sst_enabled", label: t.admin.sstEnabled },
+                { key: "shipping_west", label: t.admin.shippingWest },
+                { key: "shipping_east", label: t.admin.shippingEast },
+                { key: "free_shipping_min", label: t.admin.freeShippingMin },
               ].map(({ key, label }) => (
                 <div key={key}>
                   <label className="block text-xs font-medium text-apple-text mb-1">{label}</label>
@@ -498,22 +533,15 @@ export default function AdminDashboard() {
                 onClick={handleSettingsSave}
                 className="bg-apple-dark text-white text-sm font-medium px-6 py-2.5 rounded-full hover:bg-black transition-colors"
               >
-                Save Settings
+                {t.admin.saveSettings}
               </button>
             </div>
 
             <div className="mt-6 bg-white rounded-apple shadow-apple p-5">
-              <h3 className="font-semibold text-apple-dark mb-3 text-sm">Payment Gateway Integration</h3>
-              <p className="text-xs text-apple-text leading-relaxed">
-                Payment callback webhook: <code className="bg-apple-gray px-1.5 py-0.5 rounded text-xs">/api/payments/callback</code>
-                <br /><br />
-                Configure your payment gateway (Billplz / Touch n Go / Boost / PayPal) to POST callbacks to this endpoint.
-                <br />
-                Expected payload:{' '}
-                <code className="bg-apple-gray px-1.5 py-0.5 rounded text-xs">
-                  {'{'} orderNo, transactionId, status, amount, gateway {'}'}
-                </code>
-              </p>
+              <h3 className="font-semibold text-apple-dark mb-3 text-sm">
+                {t.admin.paymentGateway}
+              </h3>
+              <p className="text-xs text-apple-text leading-relaxed">{t.admin.paymentCallbackNote}</p>
             </div>
           </div>
         )}

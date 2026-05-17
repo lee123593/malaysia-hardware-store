@@ -3,17 +3,10 @@ import { createAdminToken } from "@/lib/auth";
 
 export async function POST(request: NextRequest) {
   try {
-    const { username, password, key } = await request.json();
+    const { username, password } = await request.json();
 
-    // Admin key verification
-    if (key && key === process.env.ADMIN_KEY) {
-      const token = await createAdminToken(username || "admin");
-      return NextResponse.json({ token });
-    }
-
-    // Username/password verification
-    const adminUser = process.env.ADMIN_USERNAME || "admin";
-    const adminPass = process.env.ADMIN_PASSWORD || "admin123";
+    const adminUser = process.env.ADMIN_USERNAME || "lee";
+    const adminPass = process.env.ADMIN_PASSWORD || "123";
     if (username === adminUser && password === adminPass) {
       const token = await createAdminToken(username);
       return NextResponse.json({ token });
