@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  nameZh      String?
+  slug        String   @unique
+  description String
+  descriptionZh String?
+  price       Float
+  costPrice   Float?
+  category    String
+  categoryZh  String?
+  images      String   @default("[]")
+  stock       Int      @default(999)
+  featured    Boolean  @default(false)
+  published   Boolean  @default(true)
+  weight      Float    @default(0.5)
+  sku         String   @unique
+  origin      String   @default("China")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  orderItems  OrderItem[]
+}
+
+model Order {
+  id            String      @id @default(cuid())
+  orderNo       String      @unique
+  customerName  String
+  customerEmail String?
+  customerPhone String
+  address       String
+  city          String
+  state         String
+  postcode      String
+  region        String      @default("west")
+  subtotal      Float
+  shippingCost  Float
+  tax           Float
+  total         Float
+  status        String      @default("pending")
+  paymentMethod String?
+  paymentRef    String?
+  paidAt        DateTime?
+  notes         String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  items         OrderItem[]
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  name      String
+  price     Float
+  quantity  Int
+  image     String?
+}
+
+model Setting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String
+}
+
+model Admin {
+  id       String @id @default(cuid())
+  username String @unique
+  password String
+}
