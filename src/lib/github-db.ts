@@ -29,11 +29,13 @@ function getDataPath(filename: string) {
 
 export async function readJsonFile<T>(filename: string): Promise<T> {
   try {
-    const data = await githubApi(getDataPath(filename));
-    const content = Buffer.from(data.content, "base64").toString("utf-8");
-    return JSON.parse(content) as T;
+    // Use raw.githubusercontent.com for reads — no auth needed for public repos
+    // This works at build time (Vercel) when GITHUB_TOKEN isn't available
+    const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/data/${filename}`;
+    const res = await fetch(url, { next: { revalidate: 60 } });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return (await res.json()) as T;
   } catch {
-    // Return default empty state
     if (filename === "orders.json") return [] as unknown as T;
     if (filename === "settings.json") return {} as unknown as T;
     return [] as unknown as T;
