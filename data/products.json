@@ -1,24 +1,5 @@
 [
   {
-    "id": "p-seed-005",
-    "name": "Aluminum Window Sliding Roller Set",
-    "nameZh": "铝合金窗推拉滑轮套装",
-    "slug": "window-sliding-roller",
-    "description": "Heavy-duty nylon roller wheels for aluminum sliding windows and doors. Smooth and quiet operation. Set of 4 with mounting screws.",
-    "descriptionZh": "重型尼龙滚轮，用于铝合金推拉门窗。平稳静音，4个装含安装螺丝。",
-    "price": 18.9,
-    "category": "door-window",
-    "images": "[\"/images/roller-1.jpg\"]",
-    "stock": 999,
-    "featured": false,
-    "published": true,
-    "weight": 0.2,
-    "sku": "DWP-001",
-    "origin": "China",
-    "createdAt": "2025-05-18T00:00:00.000Z",
-    "updatedAt": "2025-05-18T00:00:00.000Z"
-  },
-  {
     "id": "p-seed-006",
     "name": "Construction Safety Helmet ANSI Certified",
     "nameZh": "建筑安全帽 ANSI认证",
