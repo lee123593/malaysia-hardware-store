@@ -1,26 +1,5 @@
 [
   {
-    "id": "p1",
-    "name": "Premium Steel Wood Screws Set",
-    "nameZh": "高端钢制木螺丝套装",
-    "slug": "premium-steel-wood-screws",
-    "description": "High-quality carbon steel wood screws. Perfect for furniture assembly and woodworking. Rust-resistant coating. Available in multiple sizes.",
-    "descriptionZh": "高品质碳钢木螺丝。适用于家具组装和木工。防锈涂层，多种规格可选。",
-    "price": 12.9,
-    "costPrice": 6.5,
-    "category": "screws-fasteners",
-    "categoryZh": "螺丝紧固件",
-    "images": "[\"/images/screws-1.jpg\"]",
-    "stock": 999,
-    "featured": true,
-    "published": true,
-    "weight": 0.3,
-    "sku": "SCW-001",
-    "origin": "China",
-    "createdAt": "2026-05-01T00:00:00.000Z",
-    "updatedAt": "2026-05-18T06:53:54.131Z"
-  },
-  {
     "id": "p2",
     "name": "Heavy Duty Stainless Steel Bolts Kit",
     "nameZh": "重型不锈钢螺栓套件",
@@ -103,26 +82,5 @@
     "origin": "China",
     "createdAt": "2026-05-01T00:00:00.000Z",
     "updatedAt": "2026-05-01T00:00:00.000Z"
-  },
-  {
-    "id": "p1779088431001",
-    "name": "1",
-    "nameZh": "1",
-    "slug": "1",
-    "description": "",
-    "descriptionZh": null,
-    "price": 1,
-    "costPrice": null,
-    "category": "tools",
-    "categoryZh": null,
-    "images": "[]",
-    "stock": 999,
-    "featured": false,
-    "published": true,
-    "weight": 0.5,
-    "sku": "1",
-    "origin": "China",
-    "createdAt": "2026-05-18T07:13:51.001Z",
-    "updatedAt": "2026-05-18T07:13:51.001Z"
   }
 ]
