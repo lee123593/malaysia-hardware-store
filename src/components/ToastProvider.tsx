@@ -1,8 +1,13 @@
 "use client";
 import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
 
+interface ToastItem {
+  id: number;
+  msg: string;
+}
+
 interface ToastCtx {
-  toasts: string[];
+  toasts: ToastItem[];
   show: (msg: string) => void;
 }
 
@@ -13,13 +18,13 @@ export function useToast() {
 }
 
 export default function ToastProvider({ children }: { children: ReactNode }) {
-  const [toasts, setToasts] = useState<string[]>([]);
+  const [toasts, setToasts] = useState<ToastItem[]>([]);
 
   const show = useCallback((msg: string) => {
     const id = Date.now();
-    setToasts((prev) => [...prev, msg]);
+    setToasts((prev) => [...prev, { id, msg }]);
     setTimeout(() => {
-      setToasts((prev) => prev.filter((_, i) => i !== 0));
+      setToasts((prev) => prev.filter((t) => t.id !== id));
     }, 2500);
   }, []);
 
@@ -32,12 +37,12 @@ export default function ToastProvider({ children }: { children: ReactNode }) {
     <ToastContext.Provider value={{ toasts, show }}>
       {children}
       <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[999] flex flex-col gap-2 pointer-events-none">
-        {toasts.map((msg, i) => (
+        {toasts.map((t) => (
           <div
-            key={i}
+            key={t.id}
             className="bg-apple-dark text-white text-sm px-5 py-3 rounded-full shadow-apple-lg animate-[fadeIn_0.3s_ease-out] pointer-events-auto"
           >
-            {msg}
+            {t.msg}
           </div>
         ))}
       </div>

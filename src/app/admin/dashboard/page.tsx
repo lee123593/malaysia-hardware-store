@@ -95,6 +95,9 @@ export default function AdminDashboard() {
       setShowProductForm(false);
       setProductForm({});
       fetchProducts();
+    } else {
+      const data = await res.json().catch(() => ({}));
+      showMsg(data.error || t.admin.productCreateFailed);
     }
   };
 
@@ -109,21 +112,33 @@ export default function AdminDashboard() {
       setEditingProduct(null);
       setProductForm({});
       fetchProducts();
+    } else {
+      const data = await res.json().catch(() => ({}));
+      showMsg(data.error || t.admin.productUpdateFailed);
     }
   };
 
   const handleDeleteProduct = async (id: string) => {
     if (!confirm(t.admin.confirmDelete)) return;
-    await API(`/api/admin/products?id=${id}`, { method: "DELETE" });
-    showMsg(t.admin.productDeleted);
-    fetchProducts();
+    const res = await API(`/api/admin/products?id=${id}`, { method: "DELETE" });
+    if (res.ok) {
+      showMsg(t.admin.productDeleted);
+      fetchProducts();
+    } else {
+      const data = await res.json().catch(() => ({}));
+      showMsg(data.error || t.admin.productDeleteFailed);
+    }
   };
 
   const handleTogglePublish = async (product: any) => {
-    await API("/api/admin/products", {
+    const res = await API("/api/admin/products", {
       method: "PUT",
       body: JSON.stringify({ id: product.id, published: !product.published }),
     });
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      showMsg(data.error || t.admin.productUpdateFailed);
+    }
     fetchProducts();
   };
 
@@ -134,20 +149,30 @@ export default function AdminDashboard() {
   };
 
   const handleOrderStatus = async (id: string, status: string) => {
-    await API("/api/admin/orders", {
+    const res = await API("/api/admin/orders", {
       method: "PUT",
       body: JSON.stringify({ id, status }),
     });
-    showMsg(`${t.admin.orderStatusUpdated}: ${status}`);
-    fetchOrders();
+    if (res.ok) {
+      showMsg(`${t.admin.orderStatusUpdated}: ${status}`);
+      fetchOrders();
+    } else {
+      const data = await res.json().catch(() => ({}));
+      showMsg(data.error || t.admin.orderUpdateFailed);
+    }
   };
 
   const handleSettingsSave = async () => {
-    await API("/api/admin/settings", {
+    const res = await API("/api/admin/settings", {
       method: "PUT",
       body: JSON.stringify(settings),
     });
-    showMsg(t.admin.settingsSaved);
+    if (res.ok) {
+      showMsg(t.admin.settingsSaved);
+    } else {
+      const data = await res.json().catch(() => ({}));
+      showMsg(data.error || t.admin.settingsSaveFailed);
+    }
   };
 
   const handleExportCSV = () => {
