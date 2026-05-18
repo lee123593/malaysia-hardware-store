@@ -1,26 +1,5 @@
 [
   {
-    "id": "p3",
-    "name": "Professional Electric Drill 680W",
-    "nameZh": "专业电钻 680W",
-    "slug": "electric-drill-680w",
-    "description": "680W impact drill with variable speed control. Includes 13mm chuck, depth gauge and auxiliary handle. Perfect for concrete, metal and wood drilling.",
-    "descriptionZh": "680W冲击钻，变速控制。含13mm夹头、深度尺和辅助手柄。适用于混凝土、金属和木材钻孔。",
-    "price": 189,
-    "costPrice": 95,
-    "category": "power-tools",
-    "categoryZh": "电动工具",
-    "images": "[\"/images/drill-1.jpg\"]",
-    "stock": 200,
-    "featured": true,
-    "published": true,
-    "weight": 2.5,
-    "sku": "PWT-001",
-    "origin": "China",
-    "createdAt": "2026-05-01T00:00:00.000Z",
-    "updatedAt": "2026-05-01T00:00:00.000Z"
-  },
-  {
     "id": "p4",
     "name": "Digital Caliper 150mm Precision",
     "nameZh": "数显卡尺 150mm 精密测量",
