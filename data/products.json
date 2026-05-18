@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "id": "p1779118401051",
+    "name": "1",
+    "nameZh": "1",
+    "slug": "1",
+    "description": "",
+    "descriptionZh": null,
+    "price": 1,
+    "costPrice": null,
+    "category": "tools",
+    "categoryZh": null,
+    "images": "[]",
+    "stock": 999,
+    "featured": false,
+    "published": true,
+    "weight": 0.5,
+    "sku": "1",
+    "origin": "China",
+    "createdAt": "2026-05-18T15:33:21.051Z",
+    "updatedAt": "2026-05-18T15:33:21.051Z"
+  }
+]
