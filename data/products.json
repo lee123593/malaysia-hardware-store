@@ -21,6 +21,27 @@
     "updatedAt": "2026-05-18T06:53:54.131Z"
   },
   {
+    "id": "p2",
+    "name": "Heavy Duty Stainless Steel Bolts Kit",
+    "nameZh": "重型不锈钢螺栓套件",
+    "slug": "heavy-duty-bolts-kit",
+    "description": "A2-70 stainless steel hex bolts with nuts and washers. Ideal for construction and heavy machinery. M6-M12 mixed set.",
+    "descriptionZh": "A2-70不锈钢六角螺栓配螺母垫圈。适用于建筑和重型机械，M6-M12混合套装。",
+    "price": 25.5,
+    "costPrice": 12,
+    "category": "screws-fasteners",
+    "categoryZh": "螺丝紧固件",
+    "images": "[\"/images/bolts-1.jpg\"]",
+    "stock": 500,
+    "featured": true,
+    "published": true,
+    "weight": 0.8,
+    "sku": "BLT-002",
+    "origin": "China",
+    "createdAt": "2026-05-01T00:00:00.000Z",
+    "updatedAt": "2026-05-01T00:00:00.000Z"
+  },
+  {
     "id": "p3",
     "name": "Professional Electric Drill 680W",
     "nameZh": "专业电钻 680W",
@@ -82,5 +103,26 @@
     "origin": "China",
     "createdAt": "2026-05-01T00:00:00.000Z",
     "updatedAt": "2026-05-01T00:00:00.000Z"
+  },
+  {
+    "id": "p1779088795012",
+    "name": "Test Product Delete Me",
+    "nameZh": "���Բ�Ʒ",
+    "slug": "test-product-delete-me",
+    "description": "Test description",
+    "descriptionZh": null,
+    "price": 5.99,
+    "costPrice": null,
+    "category": "tools",
+    "categoryZh": null,
+    "images": "[]",
+    "stock": 999,
+    "featured": false,
+    "published": true,
+    "weight": 0.5,
+    "sku": "TEST-001",
+    "origin": "China",
+    "createdAt": "2026-05-18T07:19:55.012Z",
+    "updatedAt": "2026-05-18T07:19:55.012Z"
   }
 ]
