@@ -103,5 +103,26 @@
     "origin": "China",
     "createdAt": "2026-05-01T00:00:00.000Z",
     "updatedAt": "2026-05-01T00:00:00.000Z"
+  },
+  {
+    "id": "p1779088357843",
+    "name": "Online Test",
+    "nameZh": null,
+    "slug": "online-test",
+    "description": "",
+    "descriptionZh": null,
+    "price": 9.99,
+    "costPrice": null,
+    "category": "tools",
+    "categoryZh": null,
+    "images": "[]",
+    "stock": 999,
+    "featured": false,
+    "published": true,
+    "weight": 0.5,
+    "sku": "ONL-001",
+    "origin": "China",
+    "createdAt": "2026-05-18T07:12:37.843Z",
+    "updatedAt": "2026-05-18T07:12:37.843Z"
   }
 ]
