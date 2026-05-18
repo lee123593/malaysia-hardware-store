@@ -105,7 +105,7 @@ export const MALAYSIA_STATES: { name: string; region: MalaysiaRegion }[] = [
   { name: 'Terengganu', region: 'west' },
   { name: 'Kelantan', region: 'west' },
   { name: 'Putrajaya', region: 'west' },
-  { name: 'Labuan', region: 'west' },
+  { name: 'Labuan', region: 'east' },
   { name: 'Sabah', region: 'east' },
   { name: 'Sarawak', region: 'east' },
 ];

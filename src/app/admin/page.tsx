@@ -11,6 +11,32 @@ export default function AdminLoginPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const handleSecretKeyLogin = () => {
+    const key = prompt("Enter admin secret key:");
+    if (!key) return;
+    setError("");
+    setLoading(true);
+    fetch("/api/admin/auth", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: "__admin_key__", password: key }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.token) {
+          localStorage.setItem("admin_token", data.token);
+          router.push("/admin/dashboard");
+        } else {
+          setError(data.error || t.admin.errorAuth);
+          setLoading(false);
+        }
+      })
+      .catch(() => {
+        setError(t.admin.errorNetwork);
+        setLoading(false);
+      });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -79,6 +105,14 @@ export default function AdminLoginPage() {
             className="w-full bg-apple-dark text-white text-sm font-medium py-2.5 rounded-full hover:bg-black transition-colors disabled:opacity-50"
           >
             {loading ? t.admin.signingIn : t.admin.signIn}
+          </button>
+
+          <button
+            type="button"
+            onClick={handleSecretKeyLogin}
+            className="w-full text-xs text-apple-text hover:text-apple-blue transition-colors mt-2"
+          >
+            Use admin secret key
           </button>
         </form>
       </div>

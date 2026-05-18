@@ -43,8 +43,10 @@ export async function POST(request: NextRequest) {
     const tax = calculateTax(subtotal, sstRate);
     const total = Math.round((subtotal + shippingCost + tax) * 100) / 100;
 
+    const orderId = `ord-${Date.now()}`;
+    const ts = Date.now();
     const order = {
-      id: `ord-${Date.now()}`,
+      id: orderId,
       orderNo: generateOrderNo(),
       customerName,
       customerEmail: customerEmail || null,
@@ -63,9 +65,9 @@ export async function POST(request: NextRequest) {
       paymentRef: null,
       paidAt: null,
       notes: null,
-      items: items.map((item: any) => ({
-        id: `oi-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
-        orderId: `ord-${Date.now()}`,
+      items: items.map((item: any, idx: number) => ({
+        id: `oi-${ts}-${idx}`,
+        orderId,
         productId: item.productId,
         name: item.name,
         price: item.price,

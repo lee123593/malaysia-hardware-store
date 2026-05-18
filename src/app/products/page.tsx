@@ -29,7 +29,7 @@ export default async function ProductsPage({
     filtered = filtered.filter(
       (p: any) =>
         p.name.toLowerCase().includes(q) ||
-        (p.nameZh && p.nameZh.includes(q)) ||
+        (p.nameZh && p.nameZh.toLowerCase().includes(q)) ||
         p.sku.toLowerCase().includes(q)
     );
   }

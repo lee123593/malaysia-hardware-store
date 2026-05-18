@@ -3,6 +3,8 @@ import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useI18n } from "@/i18n";
 import { formatCurrency, formatDateMalaysia } from "@/lib/utils";
+import { CONTENT_SECTIONS, fieldToSettingsKey, getStaticValue } from "@/lib/content-defs";
+import { translations } from "@/i18n";
 
 const API = (path: string, opts?: RequestInit) =>
   fetch(path, {
@@ -26,7 +28,7 @@ const CATEGORIES: Record<string, string> = {
 export default function AdminDashboard() {
   const router = useRouter();
   const { t } = useI18n();
-  const [tab, setTab] = useState<"products" | "orders" | "settings">("products");
+  const [tab, setTab] = useState<"products" | "orders" | "settings" | "content">("products");
   const [token, setToken] = useState<string | null>(null);
   const [checked, setChecked] = useState(false);
 
@@ -40,6 +42,8 @@ export default function AdminDashboard() {
   const [productForm, setProductForm] = useState<any>({});
 
   const [message, setMessage] = useState("");
+  const [contentSettings, setContentSettings] = useState<Record<string, string>>({});
+  const [activeContentSection, setActiveContentSection] = useState(CONTENT_SECTIONS[0]?.id || "");
 
   useEffect(() => {
     const stored = localStorage.getItem("admin_token");
@@ -77,6 +81,17 @@ export default function AdminDashboard() {
     if (tab === "products") fetchProducts();
     if (tab === "orders") fetchOrders();
     if (tab === "settings") fetchSettings();
+    if (tab === "content") {
+      API("/api/admin/settings")
+        .then((r) => r.json())
+        .then((s) => {
+          const c: Record<string, string> = {};
+          for (const [k, v] of Object.entries(s)) {
+            if (k.startsWith("content_")) c[k] = v as string;
+          }
+          setContentSettings(c);
+        });
+    }
   }, [tab, token, fetchProducts, fetchOrders, fetchSettings]);
 
   const handleLogout = () => {
@@ -175,6 +190,19 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleContentSave = async () => {
+    const res = await API("/api/admin/settings", {
+      method: "PUT",
+      body: JSON.stringify(contentSettings),
+    });
+    if (res.ok) {
+      showMsg(t.admin.contentSaved);
+    } else {
+      const data = await res.json().catch(() => ({}));
+      showMsg(data.error || t.admin.contentSaveFailed);
+    }
+  };
+
   const handleExportCSV = () => {
     const header = "Order No,Date,Name,Phone,State,Items,Subtotal,Shipping,Tax,Total,Status\n";
     const rows = orders
@@ -215,7 +243,7 @@ export default function AdminDashboard() {
         <div className="flex items-center gap-6">
           <h1 className="text-sm font-semibold text-apple-dark">Admin</h1>
           <nav className="flex gap-4 text-sm">
-            {(["products", "orders", "settings"] as const).map((tabKey) => (
+            {(["products", "orders", "settings", "content"] as const).map((tabKey) => (
               <button
                 key={tabKey}
                 onClick={() => setTab(tabKey)}
@@ -227,7 +255,9 @@ export default function AdminDashboard() {
                   ? t.admin.navProducts
                   : tabKey === "orders"
                     ? t.admin.navOrders
-                    : t.admin.navSettings}
+                    : tabKey === "settings"
+                      ? t.admin.navSettings
+                      : t.admin.navContent}
               </button>
             ))}
           </nav>
@@ -567,6 +597,97 @@ export default function AdminDashboard() {
                 {t.admin.paymentGateway}
               </h3>
               <p className="text-xs text-apple-text leading-relaxed">{t.admin.paymentCallbackNote}</p>
+            </div>
+          </div>
+        )}
+
+        {/* CONTENT TAB */}
+        {tab === "content" && (
+          <div className="flex gap-5">
+            {/* Sidebar */}
+            <div className="w-48 flex-shrink-0">
+              <div className="bg-white rounded-apple shadow-apple p-2">
+                {CONTENT_SECTIONS.map((section) => (
+                  <button
+                    key={section.id}
+                    onClick={() => setActiveContentSection(section.id)}
+                    className={`block w-full text-left text-xs px-3 py-2 rounded-lg transition-colors ${
+                      activeContentSection === section.id
+                        ? "bg-apple-dark text-white font-medium"
+                        : "text-apple-text hover:bg-apple-gray"
+                    }`}
+                  >
+                    {section.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Editor Panel */}
+            <div className="flex-1 min-w-0">
+              <div className="bg-white rounded-apple shadow-apple p-5">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-lg font-semibold text-apple-dark">
+                    {t.admin.contentTitle}
+                  </h2>
+                  <button
+                    onClick={handleContentSave}
+                    className="bg-apple-dark text-white text-xs font-medium px-4 py-2 rounded-full hover:bg-black transition-colors"
+                  >
+                    {t.admin.saveSettings}
+                  </button>
+                </div>
+
+                {CONTENT_SECTIONS.filter((s) => s.id === activeContentSection).map((section) => (
+                  <div key={section.id} className="space-y-4">
+                    {section.fields.map((field) => {
+                      const enKey = fieldToSettingsKey(field, "en");
+                      const zhKey = fieldToSettingsKey(field, "zh");
+                      const enDefault = getStaticValue(translations.en, field.key);
+                      const zhDefault = getStaticValue(translations.zh, field.key);
+                      const InputTag = field.type === "textarea" ? "textarea" : "input";
+
+                      return (
+                        <div key={`${field.key}_${field.arrayIndex ?? ""}`}>
+                          <label className="block text-xs font-medium text-apple-text mb-1.5">
+                            {field.label}
+                          </label>
+                          <div className="grid grid-cols-2 gap-3">
+                            <div>
+                              <span className="text-[10px] text-apple-text mb-1 block">
+                                {t.admin.contentEnLabel}
+                              </span>
+                              <InputTag
+                                value={contentSettings[enKey] || ""}
+                                onChange={(e) =>
+                                  setContentSettings({ ...contentSettings, [enKey]: e.target.value })
+                                }
+                                placeholder={enDefault}
+                                className="w-full px-3 py-2 rounded-lg border border-apple-border text-sm focus:outline-none focus:border-apple-blue transition-colors"
+                                rows={field.type === "textarea" ? 2 : undefined}
+                              />
+                            </div>
+                            <div>
+                              <span className="text-[10px] text-apple-text mb-1 block">
+                                {t.admin.contentZhLabel}
+                              </span>
+                              <InputTag
+                                value={contentSettings[zhKey] || ""}
+                                onChange={(e) =>
+                                  setContentSettings({ ...contentSettings, [zhKey]: e.target.value })
+                                }
+                                placeholder={zhDefault}
+                                className="w-full px-3 py-2 rounded-lg border border-apple-border text-sm focus:outline-none focus:border-apple-blue transition-colors"
+                                rows={field.type === "textarea" ? 2 : undefined}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}

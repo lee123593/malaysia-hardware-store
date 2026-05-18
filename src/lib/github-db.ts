@@ -1,10 +1,18 @@
-// GitHub-backed data layer for Vercel deployment
-// Stores data as JSON files in the GitHub repository
+// Data layer: local filesystem (dev) or GitHub API (production)
+// When GITHUB_TOKEN is set, reads/writes via GitHub API for Vercel deployment.
+// When not set, reads/writes local JSON files in the data/ directory.
+
+import fs from "fs";
+import path from "path";
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || "";
-const REPO_OWNER = "lee123593";
-const REPO_NAME = "malaysia-hardware-store";
-const BRANCH = "master";
+const REPO_OWNER = process.env.GH_REPO_OWNER || "lee123593";
+const REPO_NAME = process.env.GH_REPO_NAME || "malaysia-hardware-store";
+const BRANCH = process.env.GH_BRANCH || "master";
+
+const DATA_DIR = path.join(process.cwd(), "data");
+
+const isGitHub = !!GITHUB_TOKEN;
 
 async function githubApi(path: string, options?: RequestInit) {
   const res = await fetch(`https://api.github.com/${path}`, {
@@ -23,27 +31,41 @@ async function githubApi(path: string, options?: RequestInit) {
   return res.json();
 }
 
-function getDataPath(filename: string) {
+function gitHubDataPath(filename: string) {
   return `repos/${REPO_OWNER}/${REPO_NAME}/contents/data/${filename}`;
 }
 
-export async function readJsonFile<T>(filename: string, options?: { fresh?: boolean }): Promise<T> {
-  try {
-    // When GITHUB_TOKEN is available (runtime), use the GitHub API for fresh data
-    // When it's not (build time), fall back to raw.githubusercontent.com
-    if (GITHUB_TOKEN && options?.fresh) {
-      const data = await githubApi(getDataPath(filename));
-      const content = Buffer.from(data.content, "base64").toString("utf-8");
-      return JSON.parse(content) as T;
-    }
+function localPath(filename: string) {
+  return path.join(DATA_DIR, filename);
+}
 
-    const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/data/${filename}`;
-    const fetchOptions: RequestInit = options?.fresh
-      ? { cache: "no-store" }
-      : { next: { revalidate: 60 } };
-    const res = await fetch(url, fetchOptions);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return (await res.json()) as T;
+function readLocalJson<T>(filename: string): T {
+  const filePath = localPath(filename);
+  if (!fs.existsSync(filePath)) {
+    if (filename === "orders.json") return [] as unknown as T;
+    if (filename === "settings.json") return {} as unknown as T;
+    return [] as unknown as T;
+  }
+  const raw = fs.readFileSync(filePath, "utf-8");
+  return JSON.parse(raw) as T;
+}
+
+function writeLocalJson<T>(filename: string, data: T): void {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+  fs.writeFileSync(localPath(filename), JSON.stringify(data, null, 2));
+}
+
+export async function readJsonFile<T>(filename: string, options?: { fresh?: boolean }): Promise<T> {
+  if (!isGitHub) {
+    return readLocalJson<T>(filename);
+  }
+
+  try {
+    const data = await githubApi(gitHubDataPath(filename));
+    const content = Buffer.from(data.content, "base64").toString("utf-8");
+    return JSON.parse(content) as T;
   } catch {
     if (filename === "orders.json") return [] as unknown as T;
     if (filename === "settings.json") return {} as unknown as T;
@@ -52,10 +74,14 @@ export async function readJsonFile<T>(filename: string, options?: { fresh?: bool
 }
 
 export async function writeJsonFile<T>(filename: string, data: T, message: string) {
-  // First get the current file to get its SHA (if it exists)
+  if (!isGitHub) {
+    writeLocalJson(filename, data);
+    return { success: true };
+  }
+
   let sha = "";
   try {
-    const existing = await githubApi(getDataPath(filename));
+    const existing = await githubApi(gitHubDataPath(filename));
     sha = existing.sha;
   } catch {
     // File doesn't exist yet
@@ -70,7 +96,7 @@ export async function writeJsonFile<T>(filename: string, data: T, message: strin
   };
   if (sha) body.sha = sha;
 
-  return githubApi(getDataPath(filename), {
+  return githubApi(gitHubDataPath(filename), {
     method: "PUT",
     body: JSON.stringify(body),
   });

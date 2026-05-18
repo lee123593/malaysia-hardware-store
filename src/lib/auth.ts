@@ -1,8 +1,11 @@
 import { SignJWT, jwtVerify } from "jose";
 
-const JWT_SECRET = new TextEncoder().encode(
-  process.env.JWT_SECRET || "fallback-secret"
-);
+const SECRET = process.env.JWT_SECRET || "fallback-secret-change-in-production";
+if (!process.env.JWT_SECRET && process.env.NODE_ENV === "production") {
+  console.warn("[auth] JWT_SECRET environment variable is not set. Using insecure default.");
+}
+
+const JWT_SECRET = new TextEncoder().encode(SECRET);
 
 export async function createAdminToken(username: string) {
   return new SignJWT({ username, role: "admin" })

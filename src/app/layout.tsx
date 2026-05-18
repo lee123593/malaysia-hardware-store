@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ToastProvider from "@/components/ToastProvider";
+import ContentProvider from "@/components/ContentProvider";
 
 export const metadata: Metadata = {
   title: "MY Hardware Pro — Premium Chinese Hardware Malaysia",
@@ -40,11 +41,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="geo.placename" content="Malaysia" />
       </head>
       <body>
-        <ToastProvider>
-          <Header />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
-        </ToastProvider>
+        <ContentProvider>
+          <ToastProvider>
+            <Header />
+            <main className="min-h-screen">{children}</main>
+            <Footer />
+          </ToastProvider>
+        </ContentProvider>
       </body>
     </html>
   );

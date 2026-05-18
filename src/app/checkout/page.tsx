@@ -45,7 +45,7 @@ export default function CheckoutPage() {
     e.preventDefault();
     setError("");
 
-    if (!form.customerName || !form.customerPhone || !form.address || !form.city || !form.state) {
+    if (!form.customerName || !form.customerPhone || !form.address || !form.city || !form.state || !form.postcode) {
       setError(t.checkout.fillRequired);
       return;
     }
