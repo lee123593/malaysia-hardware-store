@@ -84,13 +84,13 @@
     "updatedAt": "2026-05-01T00:00:00.000Z"
   },
   {
-    "id": "p1779089104722",
-    "name": "Test2 Should Not Stay",
-    "nameZh": "����2",
-    "slug": "test2-delete",
+    "id": "p1779089154660",
+    "name": "Cache Test Product",
+    "nameZh": "�������",
+    "slug": "cache-test",
     "description": "",
     "descriptionZh": null,
-    "price": 3.5,
+    "price": 9.99,
     "costPrice": null,
     "category": "tools",
     "categoryZh": null,
@@ -99,9 +99,9 @@
     "featured": false,
     "published": true,
     "weight": 0.5,
-    "sku": "TST-002",
+    "sku": "CACHE-001",
     "origin": "China",
-    "createdAt": "2026-05-18T07:25:04.722Z",
-    "updatedAt": "2026-05-18T07:25:04.722Z"
+    "createdAt": "2026-05-18T07:25:54.660Z",
+    "updatedAt": "2026-05-18T07:25:54.660Z"
   }
 ]
