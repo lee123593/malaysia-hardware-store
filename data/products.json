@@ -1,24 +1,5 @@
 [
   {
-    "id": "p-seed-002",
-    "name": "Heavy Duty Stainless Steel Bolts Kit",
-    "nameZh": "重型不锈钢螺栓套件",
-    "slug": "heavy-duty-bolts-kit",
-    "description": "A2-70 stainless steel hex bolts with nuts and washers. Ideal for construction and heavy machinery. M6-M12 mixed set.",
-    "descriptionZh": "A2-70不锈钢六角螺栓配螺母垫圈。适用于建筑和重型机械，M6-M12混合套装。",
-    "price": 25.5,
-    "category": "screws-fasteners",
-    "images": "[\"/images/bolts-1.jpg\"]",
-    "stock": 999,
-    "featured": true,
-    "published": true,
-    "weight": 0.8,
-    "sku": "BLT-002",
-    "origin": "China",
-    "createdAt": "2025-05-18T00:00:00.000Z",
-    "updatedAt": "2025-05-18T00:00:00.000Z"
-  },
-  {
     "id": "p-seed-003",
     "name": "Professional Electric Drill 680W",
     "nameZh": "专业电钻 680W",
