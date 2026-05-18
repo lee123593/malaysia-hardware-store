@@ -1,26 +1,5 @@
 [
   {
-    "id": "p4",
-    "name": "Digital Caliper 150mm Precision",
-    "nameZh": "数显卡尺 150mm 精密测量",
-    "slug": "digital-caliper-150mm",
-    "description": "Stainless steel digital caliper with LCD display. 0.01mm precision. Measures internal, external, depth and step dimensions.",
-    "descriptionZh": "不锈钢数显卡尺，LCD显示，0.01mm精度。测量内径、外径、深度和台阶尺寸。",
-    "price": 45,
-    "costPrice": 22,
-    "category": "tools",
-    "categoryZh": "工具类",
-    "images": "[\"/images/caliper-1.jpg\"]",
-    "stock": 300,
-    "featured": false,
-    "published": true,
-    "weight": 0.3,
-    "sku": "TOL-001",
-    "origin": "China",
-    "createdAt": "2026-05-01T00:00:00.000Z",
-    "updatedAt": "2026-05-01T00:00:00.000Z"
-  },
-  {
     "id": "p5",
     "name": "Aluminum Window Sliding Roller Set",
     "nameZh": "铝合金窗推拉滑轮套装",
