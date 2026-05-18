@@ -27,12 +27,21 @@ function getDataPath(filename: string) {
   return `repos/${REPO_OWNER}/${REPO_NAME}/contents/data/${filename}`;
 }
 
-export async function readJsonFile<T>(filename: string): Promise<T> {
+export async function readJsonFile<T>(filename: string, options?: { fresh?: boolean }): Promise<T> {
   try {
-    // Use raw.githubusercontent.com for reads — no auth needed for public repos
-    // This works at build time (Vercel) when GITHUB_TOKEN isn't available
+    // When GITHUB_TOKEN is available (runtime), use the GitHub API for fresh data
+    // When it's not (build time), fall back to raw.githubusercontent.com
+    if (GITHUB_TOKEN && options?.fresh) {
+      const data = await githubApi(getDataPath(filename));
+      const content = Buffer.from(data.content, "base64").toString("utf-8");
+      return JSON.parse(content) as T;
+    }
+
     const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/data/${filename}`;
-    const res = await fetch(url, { next: { revalidate: 60 } });
+    const fetchOptions: RequestInit = options?.fresh
+      ? { cache: "no-store" }
+      : { next: { revalidate: 60 } };
+    const res = await fetch(url, fetchOptions);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return (await res.json()) as T;
   } catch {
@@ -68,8 +77,8 @@ export async function writeJsonFile<T>(filename: string, data: T, message: strin
 }
 
 // Product operations
-export async function getProducts() {
-  return readJsonFile<any[]>("products.json");
+export async function getProducts(options?: { fresh?: boolean }) {
+  return readJsonFile<any[]>("products.json", options);
 }
 
 export async function getProductBySlug(slug: string) {
@@ -83,14 +92,14 @@ export async function getProductById(id: string) {
 }
 
 export async function createProduct(product: any) {
-  const products = await getProducts();
+  const products = await getProducts({ fresh: true });
   products.push(product);
   await writeJsonFile("products.json", products, `Add product: ${product.name}`);
   return product;
 }
 
 export async function updateProduct(id: string, updates: any) {
-  const products = await getProducts();
+  const products = await getProducts({ fresh: true });
   const idx = products.findIndex((p: any) => p.id === id);
   if (idx === -1) throw new Error("Product not found");
   products[idx] = { ...products[idx], ...updates };
@@ -99,14 +108,14 @@ export async function updateProduct(id: string, updates: any) {
 }
 
 export async function deleteProduct(id: string) {
-  const products = await getProducts();
+  const products = await getProducts({ fresh: true });
   const filtered = products.filter((p: any) => p.id !== id);
   await writeJsonFile("products.json", filtered, `Delete product: ${id}`);
 }
 
 // Order operations
-export async function getOrders() {
-  return readJsonFile<any[]>("orders.json");
+export async function getOrders(options?: { fresh?: boolean }) {
+  return readJsonFile<any[]>("orders.json", options);
 }
 
 export async function getOrderByNo(orderNo: string) {
@@ -115,14 +124,14 @@ export async function getOrderByNo(orderNo: string) {
 }
 
 export async function createOrder(order: any) {
-  const orders = await getOrders();
+  const orders = await getOrders({ fresh: true });
   orders.push(order);
   await writeJsonFile("orders.json", orders, `New order: ${order.orderNo}`);
   return order;
 }
 
 export async function updateOrder(id: string, updates: any) {
-  const orders = await getOrders();
+  const orders = await getOrders({ fresh: true });
   const idx = orders.findIndex((o: any) => o.id === id);
   if (idx === -1) throw new Error("Order not found");
   orders[idx] = { ...orders[idx], ...updates };
@@ -135,16 +144,16 @@ export async function updateOrder(id: string, updates: any) {
 }
 
 // Settings operations
-export async function getSettings(): Promise<Record<string, string>> {
+export async function getSettings(options?: { fresh?: boolean }): Promise<Record<string, string>> {
   try {
-    return await readJsonFile<Record<string, string>>("settings.json");
+    return await readJsonFile<Record<string, string>>("settings.json", options);
   } catch {
     return {};
   }
 }
 
 export async function updateSettings(updates: Record<string, string>) {
-  const settings = await getSettings();
+  const settings = await getSettings({ fresh: true });
   const merged = { ...settings, ...updates };
   await writeJsonFile("settings.json", merged, "Update settings");
   return merged;

@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
   const page = parseInt(searchParams.get("page") || "1");
   const limit = 50;
 
-  let orders = await getOrders();
+  let orders = await getOrders({ fresh: true });
 
   if (status) {
     orders = orders.filter((o: any) => o.status === status);
