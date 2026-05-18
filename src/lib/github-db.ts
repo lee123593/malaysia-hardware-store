@@ -7,7 +7,7 @@ const REPO_NAME = "malaysia-hardware-store";
 const BRANCH = "master";
 
 async function githubApi(path: string, options?: RequestInit) {
-  const res = await fetch(`https://api.github.com${path}`, {
+  const res = await fetch(`https://api.github.com/${path}`, {
     ...options,
     headers: {
       Authorization: `Bearer ${GITHUB_TOKEN}`,
