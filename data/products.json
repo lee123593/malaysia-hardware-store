@@ -1,7 +1,7 @@
 [
   {
     "id": "p1",
-    "name": "Updated Test Name",
+    "name": "Premium Steel Wood Screws Set",
     "nameZh": "高端钢制木螺丝套装",
     "slug": "premium-steel-wood-screws",
     "description": "High-quality carbon steel wood screws. Perfect for furniture assembly and woodworking. Rust-resistant coating. Available in multiple sizes.",
@@ -18,7 +18,7 @@
     "sku": "SCW-001",
     "origin": "China",
     "createdAt": "2026-05-01T00:00:00.000Z",
-    "updatedAt": "2026-05-18T06:53:05.606Z"
+    "updatedAt": "2026-05-18T06:53:54.131Z"
   },
   {
     "id": "p2",
