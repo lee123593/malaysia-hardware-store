@@ -1,6 +1,8 @@
 import { getProducts } from "@/lib/github-db";
 import ProductList from "./ProductList";
 
+export const dynamic = "force-dynamic";
+
 const CATEGORIES: Record<string, string> = {
   "screws-fasteners": "Screws & Fasteners",
   tools: "Hand Tools",

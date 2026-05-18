@@ -17,6 +17,7 @@ const isGitHub = !!GITHUB_TOKEN;
 async function githubApi(path: string, options?: RequestInit) {
   const res = await fetch(`https://api.github.com/${path}`, {
     ...options,
+    cache: "no-store",
     headers: {
       Authorization: `Bearer ${GITHUB_TOKEN}`,
       Accept: "application/vnd.github+json",

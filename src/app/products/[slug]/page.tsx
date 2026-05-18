@@ -2,12 +2,7 @@ import { getProducts, getProductBySlug } from "@/lib/github-db";
 import { notFound } from "next/navigation";
 import ProductDetail from "./ProductDetail";
 
-export async function generateStaticParams() {
-  const products = await getProducts();
-  return products
-    .filter((p: any) => p.published)
-    .map((p: any) => ({ slug: p.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const product = await getProductBySlug(params.slug);
