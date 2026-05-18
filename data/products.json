@@ -103,5 +103,26 @@
     "origin": "China",
     "createdAt": "2026-05-18T07:25:54.660Z",
     "updatedAt": "2026-05-18T07:25:54.660Z"
+  },
+  {
+    "id": "p1779089830054",
+    "name": "Final Test Product",
+    "nameZh": "���ղ���",
+    "slug": "final-test",
+    "description": "",
+    "descriptionZh": null,
+    "price": 4.99,
+    "costPrice": null,
+    "category": "tools",
+    "categoryZh": null,
+    "images": "[]",
+    "stock": 999,
+    "featured": false,
+    "published": true,
+    "weight": 0.5,
+    "sku": "FINAL-001",
+    "origin": "China",
+    "createdAt": "2026-05-18T07:37:10.054Z",
+    "updatedAt": "2026-05-18T07:37:10.056Z"
   }
 ]
