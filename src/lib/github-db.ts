@@ -14,6 +14,15 @@ const DATA_DIR = path.join(process.cwd(), "data");
 
 const isGitHub = !!GITHUB_TOKEN;
 
+class GitHubApiError extends Error {
+  status: number;
+  constructor(status: number, message: string) {
+    super(message);
+    this.status = status;
+    this.name = "GitHubApiError";
+  }
+}
+
 async function githubApi(path: string, options?: RequestInit) {
   const res = await fetch(`https://api.github.com/${path}`, {
     ...options,
@@ -27,7 +36,7 @@ async function githubApi(path: string, options?: RequestInit) {
   });
   if (!res.ok) {
     const err = await res.text();
-    throw new Error(`GitHub API error: ${res.status} ${err}`);
+    throw new GitHubApiError(res.status, `GitHub API error: ${res.status} ${err}`);
   }
   return res.json();
 }
@@ -67,10 +76,13 @@ export async function readJsonFile<T>(filename: string, options?: { fresh?: bool
     const data = await githubApi(gitHubDataPath(filename));
     const content = Buffer.from(data.content, "base64").toString("utf-8");
     return JSON.parse(content) as T;
-  } catch {
-    if (filename === "orders.json") return [] as unknown as T;
-    if (filename === "settings.json") return {} as unknown as T;
-    return [] as unknown as T;
+  } catch (error) {
+    if (error instanceof GitHubApiError && error.status === 404) {
+      if (filename === "orders.json") return [] as unknown as T;
+      if (filename === "settings.json") return {} as unknown as T;
+      return [] as unknown as T;
+    }
+    throw error;
   }
 }
 
