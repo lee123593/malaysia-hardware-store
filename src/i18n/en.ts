@@ -186,6 +186,8 @@ const en = {
     signingIn: "Signing in...",
     errorAuth: "Invalid credentials",
     errorNetwork: "Network error",
+    dashboardTitle: "Admin Panel",
+    secretKeyLogin: "Use admin secret key",
     navProducts: "Products",
     navOrders: "Orders",
     navSettings: "Settings",

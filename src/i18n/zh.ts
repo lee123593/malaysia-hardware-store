@@ -188,6 +188,8 @@ const zh: Translations = {
     signingIn: "登录中...",
     errorAuth: "用户名或密码错误",
     errorNetwork: "网络错误",
+    dashboardTitle: "管理后台",
+    secretKeyLogin: "使用管理员密钥登录",
     navProducts: "产品管理",
     navOrders: "订单管理",
     navSettings: "设置",

@@ -112,7 +112,7 @@ export default function AdminLoginPage() {
             onClick={handleSecretKeyLogin}
             className="w-full text-xs text-apple-text hover:text-apple-blue transition-colors mt-2"
           >
-            Use admin secret key
+            {t.admin.secretKeyLogin}
           </button>
         </form>
       </div>

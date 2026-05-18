@@ -16,18 +16,18 @@ const API = (path: string, opts?: RequestInit) =>
     },
   });
 
-const CATEGORIES: Record<string, string> = {
-  "screws-fasteners": "Screws & Fasteners",
-  tools: "Hand Tools",
-  "building-hardware": "Building Hardware",
-  "door-window": "Door & Window",
-  "power-tools": "Power Tools",
-  accessories: "Accessories",
-};
+const CATEGORY_KEYS = [
+  "screws-fasteners",
+  "tools",
+  "building-hardware",
+  "door-window",
+  "power-tools",
+  "accessories",
+] as const;
 
 export default function AdminDashboard() {
   const router = useRouter();
-  const { t } = useI18n();
+  const { t, lang, setLang } = useI18n();
   const [tab, setTab] = useState<"products" | "orders" | "settings" | "content">("products");
   const [token, setToken] = useState<string | null>(null);
   const [checked, setChecked] = useState(false);
@@ -51,6 +51,10 @@ export default function AdminDashboard() {
     setChecked(true);
     if (!stored) router.push("/admin");
   }, [router]);
+
+  useEffect(() => {
+    if (lang !== "zh") setLang("zh");
+  }, []);
 
   const showMsg = (msg: string) => {
     setMessage(msg);
@@ -241,7 +245,7 @@ export default function AdminDashboard() {
       {/* Top Bar */}
       <div className="bg-white border-b border-apple-border/40 px-5 h-14 flex items-center justify-between">
         <div className="flex items-center gap-6">
-          <h1 className="text-sm font-semibold text-apple-dark">Admin</h1>
+          <h1 className="text-sm font-semibold text-apple-dark">{t.admin.dashboardTitle}</h1>
           <nav className="flex gap-4 text-sm">
             {(["products", "orders", "settings", "content"] as const).map((tabKey) => (
               <button
@@ -359,9 +363,9 @@ export default function AdminDashboard() {
                         className="w-full px-3 py-2 rounded-lg border border-apple-border text-sm"
                       >
                         <option value="">{t.admin.category}</option>
-                        {Object.entries(CATEGORIES).map(([val, label]) => (
+                        {CATEGORY_KEYS.map((val) => (
                           <option key={val} value={val}>
-                            {label}
+                            {t.products.categories[val]}
                           </option>
                         ))}
                       </select>
