@@ -18,7 +18,7 @@
     "sku": "SCW-001",
     "origin": "China",
     "createdAt": "2026-05-01T00:00:00.000Z",
-    "updatedAt": "2026-05-01T00:00:00.000Z"
+    "updatedAt": "2026-05-18T06:53:54.131Z"
   },
   {
     "id": "p2",
@@ -103,47 +103,5 @@
     "origin": "China",
     "createdAt": "2026-05-01T00:00:00.000Z",
     "updatedAt": "2026-05-01T00:00:00.000Z"
-  },
-  {
-    "id": "p6",
-    "name": "Construction Safety Helmet ANSI Certified",
-    "nameZh": "建筑安全帽 ANSI认证",
-    "slug": "safety-helmet-ansi",
-    "description": "High-density ABS safety helmet with 6-point adjustable suspension. ANSI Z89.1 certified. Lightweight and comfortable for all-day wear.",
-    "descriptionZh": "高密度ABS安全帽，6点可调悬挂。ANSI Z89.1认证。轻便舒适，适合全天佩戴。",
-    "price": 15,
-    "costPrice": 7.5,
-    "category": "building-hardware",
-    "categoryZh": "建筑五金",
-    "images": "[\"/images/helmet-1.jpg\"]",
-    "stock": 800,
-    "featured": false,
-    "published": true,
-    "weight": 0.4,
-    "sku": "BHW-001",
-    "origin": "China",
-    "createdAt": "2026-05-01T00:00:00.000Z",
-    "updatedAt": "2026-05-01T00:00:00.000Z"
-  },
-  {
-    "id": "p1779087841973",
-    "name": "Test New Product",
-    "nameZh": null,
-    "slug": "test-new-product",
-    "description": "",
-    "descriptionZh": null,
-    "price": 9.99,
-    "costPrice": null,
-    "category": "tools",
-    "categoryZh": null,
-    "images": "[]",
-    "stock": 999,
-    "featured": false,
-    "published": true,
-    "weight": 0.5,
-    "sku": "TST-001",
-    "origin": "China",
-    "createdAt": "2026-05-18T07:04:01.973Z",
-    "updatedAt": "2026-05-18T07:04:01.973Z"
   }
 ]
