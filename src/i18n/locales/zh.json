@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "code": "zh",
+    "label": "中文",
+    "labelEn": "Chinese",
+    "flag": "🇨🇳"
+  },
+  "nav": {
+    "home": "首页",
+    "allProducts": "全部型号",
+    "about": "关于我们",
+    "cart": "购物车",
+    "checkout": "结算",
+    "contact": "联系我们"
+  },
+  "home": {
+    "heroTitle": "只为设计感手机壳",
+    "heroSubtitle": "中国原创设计 · 全马来西亚机型适配 · 高颜值高性价比",
+    "ctaShopNow": "立即选购",
+    "ctaViewModels": "查找我的型号",
+    "featuresTitle": "为什么选择我们",
+    "featureSource": "中国原创货源",
+    "featureModels": "覆盖全马热门机型",
+    "featurePrice": "低价高颜值",
+    "featureShipping": "全马配送到家",
+    "hotModels": "热门机型",
+    "newArrivals": "新品上架",
+    "bestSellers": "热销推荐",
+    "viewAll": "查看全部"
+  },
+  "product": {
+    "addToCart": "加入购物车",
+    "buyNow": "立即购买",
+    "compatibleModels": "适配机型",
+    "material": "材质工艺",
+    "style": "款式风格",
+    "shippingInfo": "发货说明",
+    "relatedProducts": "同机型其他款式",
+    "price": "价格",
+    "inStock": "有货",
+    "outOfStock": "暂时缺货",
+    "newTag": "新品",
+    "hotTag": "热销",
+    "recommendedTag": "推荐",
+    "sortLatest": "最新上架",
+    "sortPriceLow": "价格从低到高",
+    "sortPriceHigh": "价格从高到低",
+    "sortPopular": "热销优先"
+  },
+  "cart": {
+    "title": "我的购物车",
+    "empty": "购物车是空的",
+    "emptyHint": "快去挑选心仪的手机壳吧",
+    "quantity": "数量",
+    "subtotal": "小计",
+    "total": "合计",
+    "checkout": "去结算",
+    "continueShopping": "继续选购",
+    "remove": "移除"
+  },
+  "checkout": {
+    "title": "确认订单",
+    "shippingInfo": "收货信息",
+    "fullName": "收件人姓名",
+    "phone": "联系电话",
+    "address": "详细地址",
+    "city": "城市",
+    "state": "州/省",
+    "postcode": "邮政编码",
+    "region": "配送地区",
+    "regionWM": "西马",
+    "regionEM": "东马",
+    "orderSummary": "订单汇总",
+    "submitOrder": "提交订单",
+    "paymentNotice": "提交订单后，我们将通过 WhatsApp 与您确认付款方式"
+  },
+  "footer": {
+    "about": "关于 CaseArt",
+    "shipping": "配送说明",
+    "afterSales": "售后服务",
+    "contact": "联系客服",
+    "copyright": "© 2026 CaseArt. 版权所有",
+    "langSwitch": "语言"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "加载失败",
+    "retry": "重试",
+    "noData": "暂无内容",
+    "search": "搜索",
+    "filter": "筛选",
+    "clear": "清除",
+    "confirm": "确认",
+    "cancel": "取消",
+    "back": "返回",
+    "next": "下一步",
+    "prev": "上一步"
+  },
+  "about": {
+    "title": "关于 CaseArt",
+    "intro": "CaseArt 是专为马来西亚用户打造的设计感手机壳商城。我们精选中国原创设计师品牌，覆盖马来西亚全热门手机型号，为每一位用户提供高颜值、高品质、高性价比的手机壳。",
+    "shippingTitle": "配送说明",
+    "shippingDesc": "所有商品从中国直发马来西亚。西马地区约 7-12 个工作日送达，东马地区约 10-15 个工作日送达。",
+    "afterSalesTitle": "售后服务",
+    "afterSalesDesc": "收到商品如有质量问题，请在 7 天内联系我们，我们将提供退换货服务。",
+    "noticeTitle": "下单须知",
+    "noticeDesc": "下单前请确认您的手机型号。商品图片均为实物拍摄，因光线和显示器差异，可能有轻微色差。"
+  }
+}

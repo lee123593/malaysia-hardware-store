@@ -1,0 +1,32 @@
+{
+  "banner": {
+    "title": {
+      "zh": "只为设计感手机壳",
+      "en": "Design Phone Cases Only",
+      "ms": "Sarung Telefon Berreka Bentuk Sahaja"
+    },
+    "subtitle": {
+      "zh": "中国原创设计 · 全机型适配 · 高性价比 · 直送马来西亚",
+      "en": "Original Chinese Designs · All Models · Affordable · Ship to Malaysia",
+      "ms": "Rekaan Asli China · Semua Model · Mampu Milik · Hantar ke Malaysia"
+    },
+    "buttonText": {
+      "zh": "立即选购",
+      "en": "Shop Now",
+      "ms": "Beli Sekarang"
+    },
+    "buttonLink": "/products",
+    "image": "/images/banner.jpg"
+  },
+  "sellingPoints": [
+    { "id": "sp1", "icon": "package", "visible": true, "order": 1 },
+    { "id": "sp2", "icon": "smartphone", "visible": true, "order": 2 },
+    { "id": "sp3", "icon": "heart", "visible": true, "order": 3 },
+    { "id": "sp4", "icon": "truck", "visible": true, "order": 4 }
+  ],
+  "sections": [
+    { "id": "hotModels", "type": "hotModels", "visible": true, "order": 1 },
+    { "id": "newProducts", "type": "newProducts", "visible": true, "order": 2 },
+    { "id": "hotProducts", "type": "hotProducts", "visible": true, "order": 3 }
+  ]
+}

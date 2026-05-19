@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Phone case detail — high quality design for your phone">
+  <title>Product Detail — Malaysia Design Phone Case Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="header-logo">
+        <span class="logo-dot"></span>KASE.
+      </a>
+      <nav class="header-nav">
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="category.html" data-i18n="nav.category">Models</a>
+        <a href="cart.html" data-i18n="nav.cart">Cart</a>
+        <a href="about.html" data-i18n="nav.about">About</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-switch">
+          <button data-lang="en" class="active">EN</button>
+          <button data-lang="zh">中文</button>
+          <button data-lang="ms">BM</button>
+        </div>
+        <a href="cart.html" class="icon-btn cart-badge" aria-label="Cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-count" style="display:none">0</span>
+        </a>
+        <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top:calc(var(--header-h) + var(--space-2xl))">
+
+    <!-- BREADCRUMB -->
+    <div class="container" style="padding:var(--space-md) 0">
+      <nav style="display:flex;align-items:center;gap:var(--space-sm);font-size:0.85rem;color:var(--text-muted)" class="animate-fade-in">
+        <a href="index.html" style="color:var(--text-secondary)">Home</a>
+        <span>/</span>
+        <a href="category.html" style="color:var(--text-secondary)">Models</a>
+        <span>/</span>
+        <a href="#" id="breadcrumbModel" style="color:var(--text-secondary)">iPhone 16 Pro Max</a>
+        <span>/</span>
+        <span style="color:var(--klein);font-weight:600" id="breadcrumbName">Product</span>
+      </nav>
+    </div>
+
+    <!-- PRODUCT DETAIL -->
+    <section class="section-sm">
+      <div class="container">
+        <div class="detail-layout">
+
+          <!-- GALLERY -->
+          <div class="detail-gallery animate-fade-up">
+            <div class="gallery-main">
+              <img id="mainImage" src="https://placehold.co/600x600/002FA7/white?text=Case" alt="Product" style="transition:opacity 0.15s ease">
+            </div>
+            <div class="gallery-thumbs" id="galleryThumbs">
+              <!-- JS populated -->
+            </div>
+          </div>
+
+          <!-- INFO -->
+          <div class="detail-info animate-fade-up stagger-2">
+            <h1 id="productName">Geometric Line PC Hard Case</h1>
+            <div class="detail-model-tag" id="modelTag">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              <span data-i18n="detail.model">Compatible:</span> <strong id="modelName">iPhone 16 Pro Max</strong>
+            </div>
+            <div class="detail-price">
+              <span class="currency" data-i18n="common.currency">RM</span> <span id="productPrice">29.90</span>
+            </div>
+
+            <div class="detail-meta">
+              <div class="detail-meta-item">
+                <svg class="meta-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                <span><strong data-i18n="detail.material">Material:</strong> <span id="productMaterial">PC Hard Shell</span></span>
+              </div>
+              <div class="detail-meta-item">
+                <svg class="meta-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                <span><strong data-i18n="detail.style">Style:</strong> <span id="productStyle">Geometric</span></span>
+              </div>
+              <div class="detail-meta-item">
+                <svg class="meta-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><polyline points="17 6 23 12 17 18"/><polyline points="7 18 1 12 7 6"/></svg>
+                <span data-i18n="detail.shipping.text" style="font-size:0.9rem;color:var(--text-secondary)">Ships from China to Malaysia: West ~7-12 days, East ~10-15 days</span>
+              </div>
+            </div>
+
+            <!-- Quantity + Actions -->
+            <div style="margin-bottom:var(--space-lg)">
+              <label style="font-size:0.85rem;font-weight:600;color:var(--text-secondary);display:block;margin-bottom:var(--space-sm)" data-i18n="detail.qty">Quantity</label>
+              <div style="display:flex;gap:var(--space-md);align-items:center;flex-wrap:wrap">
+                <div class="quantity-input">
+                  <button class="qty-minus" aria-label="Decrease">−</button>
+                  <input type="number" value="1" min="1" max="99" id="qtyInput" aria-label="Quantity">
+                  <button class="qty-plus" aria-label="Increase">+</button>
+                </div>
+                <span style="font-size:0.8rem;color:var(--text-muted)" id="stockStatus" data-i18n="detail.inStock">In Stock</span>
+              </div>
+            </div>
+
+            <div class="detail-actions">
+              <button class="btn btn-primary btn-lg ripple" id="addToCartBtn" data-i18n="detail.addCart">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                Add to Cart
+              </button>
+              <button class="btn btn-outline btn-lg" id="buyNowBtn" data-i18n="detail.buyNow">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RELATED PRODUCTS -->
+        <div class="related-section">
+          <h3 class="heading-3" data-i18n="section.related">Same Model</h3>
+          <div class="product-grid" id="relatedGrid">
+            <!-- JS populated -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>KASE.</h4>
+          <p data-i18n="footer.brand">Malaysia Design Phone Case Store — Original Chinese designs for your phone</p>
+          <div class="footer-lang-switch lang-switch" style="margin-top:var(--space-lg);background:rgba(255,255,255,0.08)">
+            <button data-lang="en" class="active">EN</button>
+            <button data-lang="zh">中文</button>
+            <button data-lang="ms">BM</button>
+          </div>
+        </div>
+        <div>
+          <h4 data-i18n="footer.shop">Shopping Guide</h4>
+          <a href="category.html" data-i18n="nav.category">Models</a>
+          <a href="cart.html" data-i18n="nav.cart">Cart</a>
+          <a href="checkout.html" data-i18n="nav.checkout">Checkout</a>
+        </div>
+        <div>
+          <h4 data-i18n="footer.help">Help Center</h4>
+          <a href="about.html" data-i18n="about.shipping">Shipping Info</a>
+          <a href="about.html" data-i18n="about.after">After-Sales</a>
+          <a href="about.html" data-i18n="about.story">Our Story</a>
+        </div>
+        <div>
+          <h4 data-i18n="footer.contact">Contact Us</h4>
+          <a href="#">WhatsApp</a>
+          <a href="#">Email</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">© 2026 Malaysia Design Phone Case Store. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      /* Parse product from URL or use mock data */
+      const productId = getParam('id');
+      let product;
+
+      if (productId) {
+        /* Try to find from localStorage mock or create from ID */
+        const parts = productId.split('-');
+        const model = parts.slice(0, -1).join(' ');
+        const idx = parseInt(parts[parts.length - 1]) - 1;
+        const products = Store.getProducts(model, 12);
+        product = products[idx] || products[0];
+      } else {
+        /* Default demo product */
+        product = Store.getProducts('iPhone 16 Pro Max', 1)[0];
+      }
+
+      if (!product) {
+        document.querySelector('.detail-layout').innerHTML = '<p style="text-align:center;padding:4rem">Product not found. <a href="category.html" style="color:var(--klein)">Browse models</a></p>';
+        return;
+      }
+
+      /* Fill product info */
+      document.getElementById('productName').textContent = product.name;
+      document.getElementById('modelName').textContent = product.model;
+      document.getElementById('productPrice').textContent = product.price.toFixed(2);
+      document.getElementById('productMaterial').textContent = product.material;
+      document.getElementById('productStyle').textContent = product.style;
+      document.getElementById('mainImage').src = product.image;
+      document.getElementById('breadcrumbModel').textContent = product.model;
+      document.getElementById('breadcrumbModel').href = `products.html?model=${encodeURIComponent(product.model)}`;
+      document.getElementById('breadcrumbName').textContent = product.name;
+      document.title = product.name + ' — KASE.';
+
+      /* Gallery thumbs */
+      const thumbsContainer = document.getElementById('galleryThumbs');
+      product.images.forEach((img, i) => {
+        const thumb = document.createElement('div');
+        thumb.className = `gallery-thumb ${i === 0 ? 'active' : ''}`;
+        thumb.innerHTML = `<img src="${img}" alt="View ${i + 1}">`;
+        thumb.addEventListener('click', () => {
+          document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
+          document.getElementById('mainImage').style.opacity = '0';
+          setTimeout(() => {
+            document.getElementById('mainImage').src = img;
+            document.getElementById('mainImage').style.opacity = '1';
+          }, 150);
+        });
+        thumbsContainer.appendChild(thumb);
+      });
+
+      /* Stock status */
+      document.getElementById('stockStatus').textContent = product.inStock
+        ? I18N.t('detail.inStock')
+        : I18N.t('detail.outStock');
+
+      if (!product.inStock) {
+        document.getElementById('addToCartBtn').disabled = true;
+        document.getElementById('addToCartBtn').style.opacity = '0.5';
+        document.getElementById('addToCartBtn').style.pointerEvents = 'none';
+      }
+
+      /* Add to cart */
+      const qtyInput = document.getElementById('qtyInput');
+      document.getElementById('addToCartBtn').addEventListener('click', () => {
+        const qty = parseInt(qtyInput.value) || 1;
+        Cart.add({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          model: product.model,
+          image: product.image
+        }, qty);
+        /* Button feedback animation */
+        const btn = document.getElementById('addToCartBtn');
+        btn.style.transform = 'scale(0.95)';
+        setTimeout(() => btn.style.transform = '', 150);
+      });
+
+      /* Buy now */
+      document.getElementById('buyNowBtn').addEventListener('click', () => {
+        const qty = parseInt(qtyInput.value) || 1;
+        Cart.add({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          model: product.model,
+          image: product.image
+        }, qty);
+        window.location.href = 'checkout.html';
+      });
+
+      /* Related products */
+      const relatedGrid = document.getElementById('relatedGrid');
+      const related = Store.getProducts(product.model, 4);
+      related.forEach((p, i) => {
+        if (p.id === product.id) return;
+        const div = document.createElement('div');
+        div.innerHTML = renderProductCard(p);
+        const card = div.firstElementChild;
+        card.classList.add('reveal', `stagger-${(i % 4) + 1}`);
+        card.addEventListener('click', (e) => {
+          if (e.target.closest('.card-quick-add')) return;
+          window.location.href = `detail.html?id=${encodeURIComponent(p.id)}`;
+        });
+        card.style.cursor = 'pointer';
+        relatedGrid.appendChild(card);
+      });
+      if (relatedGrid.children.length === 0) {
+        relatedGrid.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">No related products</p>';
+      }
+      initScrollReveal();
+
+      /* Update i18n on lang change */
+      window.addEventListener('langChange', () => {
+        document.getElementById('stockStatus').textContent = product.inStock
+          ? I18N.t('detail.inStock')
+          : I18N.t('detail.outStock');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{
+  "orders": [
+    {
+      "id": "ORD20260515001",
+      "customerName": "Ahmad bin Ismail",
+      "phone": "+60 12-345-6789",
+      "email": "ahmad@email.com",
+      "address": "No. 12, Jalan Bukit Bintang, 55100 Kuala Lumpur",
+      "region": "wm",
+      "items": [
+        { "productId": "p001", "name": "克莱因极简艺术壳", "quantity": 1, "price": 35.90 },
+        { "productId": "p003", "name": "透明防摔气囊壳", "quantity": 1, "price": 25.90 }
+      ],
+      "subtotal": 61.80,
+      "shipping": 8.00,
+      "total": 69.80,
+      "status": "pending",
+      "notes": "颜色偏好蓝色系",
+      "createdAt": "2026-05-15T10:30:00Z"
+    },
+    {
+      "id": "ORD20260516001",
+      "customerName": "陈美玲",
+      "phone": "+60 16-789-0123",
+      "email": "meiling@email.com",
+      "address": "Lot 45, Jalan Tun Razak, 50400 Kuala Lumpur",
+      "region": "wm",
+      "items": [
+        { "productId": "p004", "name": "中国风水墨画壳", "quantity": 2, "price": 38.90 }
+      ],
+      "subtotal": 77.80,
+      "shipping": 8.00,
+      "total": 85.80,
+      "status": "shipped",
+      "notes": "请用盒子包装",
+      "createdAt": "2026-05-16T14:20:00Z"
+    },
+    {
+      "id": "ORD20260517001",
+      "customerName": "Siti Nurhaliza",
+      "phone": "+60 19-456-7890",
+      "email": "siti@email.com",
+      "address": "No. 88, Jalan Gaya, 88300 Kota Kinabalu, Sabah",
+      "region": "em",
+      "items": [
+        { "productId": "p006", "name": "日系和风樱花壳", "quantity": 1, "price": 29.90 }
+      ],
+      "subtotal": 29.90,
+      "shipping": 15.00,
+      "total": 44.90,
+      "status": "pending",
+      "notes": "",
+      "createdAt": "2026-05-17T08:15:00Z"
+    }
+  ]
+}

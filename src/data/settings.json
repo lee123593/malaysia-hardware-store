@@ -1,0 +1,54 @@
+{
+  "siteName": {
+    "zh": "CaseArt",
+    "en": "CaseArt",
+    "ms": "CaseArt"
+  },
+  "adminPassword": "admin123",
+  "logo": "/images/logo.png",
+  "favicon": "/images/favicon.ico",
+  "defaultLanguage": "en",
+  "enableLanguageSwitch": true,
+  "currency": {
+    "code": "MYR",
+    "symbol": "RM",
+    "locale": "ms-MY"
+  },
+  "shippingInfo": {
+    "zh": "所有商品从中国直发马来西亚，正常配送时效：西马 7-12 工作日，东马 10-15 工作日。如遇海关检查可能会稍有延迟，敬请谅解。",
+    "en": "All products ship directly from China to Malaysia. Delivery estimate: West Malaysia 7-12 working days, East Malaysia 10-15 working days. Slight delays may occur due to customs inspection.",
+    "ms": "Semua produk dihantar terus dari China ke Malaysia. Anggaran penghantaran: Semenanjung Malaysia 7-12 hari bekerja, Malaysia Timur 10-15 hari bekerja. Kelewatan sedikit mungkin berlaku akibat pemeriksaan kastam."
+  },
+  "afterSalesInfo": {
+    "zh": "如收到商品有质量问题，请在签收后 7 天内联系客服。我们提供换货服务（来回运费由我们承担）。因个人原因退货，运费需自理。",
+    "en": "If you receive a defective product, please contact customer service within 7 days of receipt. We offer exchange service (shipping covered by us). Returns for personal reasons require self-paid shipping.",
+    "ms": "Jika anda menerima produk yang rosak, sila hubungi khidmat pelanggan dalam masa 7 hari selepas penerimaan. Kami menawarkan perkhidmatan pertukaran (penghantaran ditanggung oleh kami). Pemulangan atas sebab peribadi memerlukan penghantaran dibayar sendiri."
+  },
+  "aboutUs": {
+    "zh": "CaseArt 是专为马来西亚用户打造的设计感手机壳商城。我们精选中国原创设计品牌，为您带来高颜值、高品质、高性价比的手机壳。每一款手机壳都经过精心挑选，只为让你的手机与众不同。",
+    "en": "CaseArt is a design-focused phone case store built for Malaysian users. We curate original Chinese design brands to bring you stylish, high-quality, and affordable phone cases. Every case is carefully selected to make your phone stand out.",
+    "ms": "CaseArt ialah kedai sarung telefon berfokuskan rekaan yang dibina untuk pengguna Malaysia. Kami memilih jenama rekaan asli China untuk membawakan sarung telefon yang bergaya, berkualiti tinggi dan mampu milik. Setiap sarung dipilih dengan teliti untuk menjadikan telefon anda menonjol."
+  },
+  "footerCopyright": {
+    "zh": "© 2026 CaseArt. 版权所有 | 马来西亚设计感手机壳专属商城",
+    "en": "© 2026 CaseArt. All rights reserved. | Malaysia Design Phone Case Store",
+    "ms": "© 2026 CaseArt. Hak cipta terpelihara. | Kedai Sarung Telefon Berreka Bentuk Malaysia"
+  },
+  "contact": {
+    "email": "hello@caseart.my",
+    "whatsapp": "+60 11-2345-6789",
+    "instagram": "@caseart.my"
+  },
+  "seo": {
+    "title": {
+      "zh": "CaseArt - 马来西亚设计感手机壳商城",
+      "en": "CaseArt - Malaysia Design Phone Case Store",
+      "ms": "CaseArt - Kedai Sarung Telefon Berreka Bentuk Malaysia"
+    },
+    "description": {
+      "zh": "专为马来西亚打造的设计感手机壳商城。中国原创设计，全机型适配，高性价比。",
+      "en": "Malaysia's design-focused phone case store. Original Chinese designs, all models, affordable prices.",
+      "ms": "Kedai sarung telefon berfokuskan rekaan Malaysia. Rekaan asli China, semua model, harga mampu milik."
+    }
+  }
+}

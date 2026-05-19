@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete your order — enter shipping details for Malaysia delivery">
+  <title data-i18n="checkout.title">Checkout — Malaysia Design Phone Case Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="header-logo">
+        <span class="logo-dot"></span>KASE.
+      </a>
+      <nav class="header-nav">
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="category.html" data-i18n="nav.category">Models</a>
+        <a href="cart.html" data-i18n="nav.cart">Cart</a>
+        <a href="about.html" data-i18n="nav.about">About</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-switch">
+          <button data-lang="en" class="active">EN</button>
+          <button data-lang="zh">中文</button>
+          <button data-lang="ms">BM</button>
+        </div>
+        <a href="cart.html" class="icon-btn cart-badge" aria-label="Cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-count" style="display:none">0</span>
+        </a>
+        <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding-top:calc(var(--header-h) + var(--space-2xl))">
+
+    <!-- PAGE HEADER -->
+    <section style="background:var(--klein-gradient);padding:var(--space-3xl) 0;text-align:center;color:var(--white)">
+      <div class="container">
+        <h1 class="heading-2 animate-fade-up" data-i18n="checkout.title">Checkout</h1>
+      </div>
+    </section>
+
+    <!-- CHECKOUT FORM -->
+    <section class="section">
+      <div class="container">
+        <div class="checkout-layout">
+
+          <!-- Form -->
+          <div class="animate-fade-up">
+            <form class="checkout-form" id="checkoutForm" onsubmit="return handleSubmit(event)">
+
+              <!-- Contact Info -->
+              <div class="form-section">
+                <h3 data-i18n="checkout.contact">Contact Info</h3>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label data-i18n="checkout.name">Recipient Name *</label>
+                    <input type="text" required placeholder="Full name" data-i18n-placeholder="checkout.name">
+                  </div>
+                  <div class="form-group">
+                    <label data-i18n="checkout.phone">Phone Number *</label>
+                    <input type="tel" required placeholder="+60 1X-XXXX XXXX" data-i18n-placeholder="checkout.phone">
+                  </div>
+                  <div class="form-group span-2">
+                    <label data-i18n="checkout.email">Email (optional)</label>
+                    <input type="email" placeholder="your@email.com" data-i18n-placeholder="checkout.email">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Shipping Address -->
+              <div class="form-section">
+                <h3 data-i18n="checkout.address">Shipping Address</h3>
+                <div class="form-grid">
+                  <div class="form-group span-2">
+                    <label data-i18n="checkout.address1">Address Line *</label>
+                    <input type="text" required placeholder="Street, apartment, unit no." data-i18n-placeholder="checkout.address1">
+                  </div>
+                  <div class="form-group">
+                    <label data-i18n="checkout.city">City *</label>
+                    <input type="text" required placeholder="Kuala Lumpur" data-i18n-placeholder="checkout.city">
+                  </div>
+                  <div class="form-group">
+                    <label data-i18n="checkout.state">State *</label>
+                    <select required>
+                      <option value="">-- Select --</option>
+                      <option>Johor</option><option>Kedah</option><option>Kelantan</option>
+                      <option>Melaka</option><option>Negeri Sembilan</option><option>Pahang</option>
+                      <option>Perak</option><option>Perlis</option><option>Pulau Pinang</option>
+                      <option>Selangor</option><option>Terengganu</option>
+                      <option>Kuala Lumpur</option><option>Putrajaya</option><option>Labuan</option>
+                      <option>Sabah</option><option>Sarawak</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label data-i18n="checkout.postcode">Postcode *</label>
+                    <input type="text" required placeholder="50000" data-i18n-placeholder="checkout.postcode">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Shipping Region -->
+              <div class="form-section">
+                <h3 data-i18n="checkout.region">Shipping Region</h3>
+                <input type="hidden" id="shippingRegion" value="west">
+                <div class="shipping-options">
+                  <div class="shipping-option active" data-region="west">
+                    <h4 data-i18n="checkout.west">West Malaysia</h4>
+                    <p data-i18n="checkout.west.desc">KL, Selangor, Penang etc.</p>
+                    <div class="shipping-price" data-i18n="common.free">Free</div>
+                  </div>
+                  <div class="shipping-option" data-region="east">
+                    <h4 data-i18n="checkout.east">East Malaysia</h4>
+                    <p data-i18n="checkout.east.desc">Sabah, Sarawak etc.</p>
+                    <div class="shipping-price">+RM 8.00</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit -->
+              <button type="submit" class="btn btn-primary btn-lg btn-block ripple" data-i18n="checkout.placeOrder">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Place Order
+              </button>
+
+              <p style="text-align:center;margin-top:var(--space-lg);font-size:0.85rem;color:var(--text-muted);line-height:1.6" data-i18n="checkout.payment.note">
+                After submission, we will contact you via WhatsApp or email to confirm payment
+              </p>
+            </form>
+          </div>
+
+          <!-- Order Summary Sidebar -->
+          <div class="order-summary-sidebar animate-fade-up stagger-2">
+            <div class="cart-summary" style="position:static">
+              <h3 data-i18n="checkout.orderSummary">Order Summary</h3>
+              <div class="order-items" id="orderItems">
+                <!-- JS populated -->
+              </div>
+              <div style="margin-top:var(--space-lg)">
+                <div class="summary-row">
+                  <span data-i18n="cart.subtotal">Subtotal</span>
+                  <span id="ckSubtotal">RM 0.00</span>
+                </div>
+                <div class="summary-row">
+                  <span data-i18n="cart.shipping">Shipping</span>
+                  <span id="ckShipping">Free</span>
+                </div>
+                <div class="summary-row total">
+                  <span data-i18n="cart.total">Total</span>
+                  <span class="price" id="ckTotal">RM 0.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>KASE.</h4>
+          <p data-i18n="footer.brand">Malaysia Design Phone Case Store — Original Chinese designs for your phone</p>
+          <div class="footer-lang-switch lang-switch" style="margin-top:var(--space-lg);background:rgba(255,255,255,0.08)">
+            <button data-lang="en" class="active">EN</button>
+            <button data-lang="zh">中文</button>
+            <button data-lang="ms">BM</button>
+          </div>
+        </div>
+        <div>
+          <h4 data-i18n="footer.shop">Shopping Guide</h4>
+          <a href="category.html" data-i18n="nav.category">Models</a>
+          <a href="cart.html" data-i18n="nav.cart">Cart</a>
+          <a href="checkout.html" data-i18n="nav.checkout">Checkout</a>
+        </div>
+        <div>
+          <h4 data-i18n="footer.help">Help Center</h4>
+          <a href="about.html" data-i18n="about.shipping">Shipping Info</a>
+          <a href="about.html" data-i18n="about.after">After-Sales</a>
+          <a href="about.html" data-i18n="about.story">Our Story</a>
+        </div>
+        <div>
+          <h4 data-i18n="footer.contact">Contact Us</h4>
+          <a href="#">WhatsApp</a>
+          <a href="#">Email</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">© 2026 Malaysia Design Phone Case Store. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    /* Expose for shipping region change */
+    function updateCheckoutTotals() {
+      const items = Cart.get();
+      const subtotal = items.reduce((s, i) => s + i.price * i.qty, 0);
+      const region = document.getElementById('shippingRegion')?.value || 'west';
+      const shippingFee = region === 'east' ? 8 : 0;
+
+      document.getElementById('ckSubtotal').textContent = formatMYR(subtotal);
+      document.getElementById('ckShipping').textContent = shippingFee > 0 ? formatMYR(shippingFee) : I18N.t('common.free');
+      document.getElementById('ckTotal').textContent = formatMYR(subtotal + shippingFee);
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      /* Collect form data */
+      const form = document.getElementById('checkoutForm');
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      data.shippingRegion = document.getElementById('shippingRegion').value;
+      data.items = Cart.get();
+      data.total = Cart.total() + (data.shippingRegion === 'east' ? 8 : 0);
+
+      /* In production: POST to backend. For now, show success */
+      Cart.showToast('Order submitted! We will contact you shortly.', 'success');
+
+      /* Clear cart and redirect */
+      setTimeout(() => {
+        localStorage.removeItem('cart');
+        Cart.updateCount();
+        window.location.href = 'index.html';
+      }, 2000);
+
+      return false;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const items = Cart.get();
+
+      /* If cart empty, redirect */
+      if (items.length === 0) {
+        document.querySelector('.checkout-layout').innerHTML = `
+          <div style="text-align:center;padding:var(--space-4xl) 0;grid-column:1/-1">
+            <div style="font-size:4rem;margin-bottom:var(--space-lg);opacity:0.3">📦</div>
+            <h3>Your cart is empty</h3>
+            <p style="color:var(--text-secondary);margin-bottom:var(--space-xl)">Add some cases before checkout</p>
+            <a href="category.html" class="btn btn-primary btn-lg">Browse Models</a>
+          </div>`;
+        return;
+      }
+
+      /* Render order items */
+      const orderItems = document.getElementById('orderItems');
+      orderItems.innerHTML = items.map(item => `
+        <div style="display:flex;gap:var(--space-md);align-items:center;padding:var(--space-sm) 0">
+          <div style="width:56px;height:56px;border-radius:var(--radius-md);overflow:hidden;flex-shrink:0;background:var(--gray-100)">
+            <img src="${item.image}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover" loading="lazy">
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:0.85rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${item.name}</div>
+            <div style="font-size:0.75rem;color:var(--text-muted)">${item.model} × ${item.qty}</div>
+          </div>
+          <div style="font-weight:600;color:var(--klein);font-size:0.9rem">${formatMYR(item.price * item.qty)}</div>
+        </div>
+      `).join('');
+
+      /* Item count */
+      const totalQty = items.reduce((s, i) => s + i.qty, 0);
+      const countEl = document.createElement('div');
+      countEl.style.cssText = 'font-size:0.8rem;color:var(--text-muted);margin-bottom:var(--space-md)';
+      countEl.textContent = I18N.t('checkout.items', { count: totalQty });
+      orderItems.insertBefore(countEl, orderItems.firstChild);
+
+      updateCheckoutTotals();
+
+      /* Bind shipping option clicks */
+      document.querySelectorAll('.shipping-option').forEach(opt => {
+        opt.addEventListener('click', () => {
+          document.querySelectorAll('.shipping-option').forEach(o => o.classList.remove('active'));
+          opt.classList.add('active');
+          document.getElementById('shippingRegion').value = opt.dataset.region;
+          updateCheckoutTotals();
+        });
+      });
+    });
+  </script>
+</body>
+</html>

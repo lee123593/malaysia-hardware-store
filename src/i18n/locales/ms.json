@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "code": "ms",
+    "label": "Bahasa Melayu",
+    "labelEn": "Malay",
+    "flag": "🇲🇾"
+  },
+  "nav": {
+    "home": "Utama",
+    "allProducts": "Semua Model",
+    "about": "Tentang Kami",
+    "cart": "Troli",
+    "checkout": "Daftar Keluar",
+    "contact": "Hubungi Kami"
+  },
+  "home": {
+    "heroTitle": "Sarung Telefon Berreka Bentuk Sahaja",
+    "heroSubtitle": "Rekaan Asli China · Semua Model Malaysia · Bergaya & Mampu Milik",
+    "ctaShopNow": "Beli Sekarang",
+    "ctaViewModels": "Cari Model Saya",
+    "featuresTitle": "Mengapa Pilih Kami",
+    "featureSource": "Rekaan Asli China",
+    "featureModels": "Semua Model Popular Malaysia",
+    "featurePrice": "Mampu Milik & Bergaya",
+    "featureShipping": "Penghantaran Seluruh Malaysia",
+    "hotModels": "Model Popular",
+    "newArrivals": "Baru Tiba",
+    "bestSellers": "Paling Laris",
+    "viewAll": "Lihat Semua"
+  },
+  "product": {
+    "addToCart": "Tambah ke Troli",
+    "buyNow": "Beli Sekarang",
+    "compatibleModels": "Model Serasi",
+    "material": "Bahan",
+    "style": "Gaya",
+    "shippingInfo": "Maklumat Penghantaran",
+    "relatedProducts": "Lagi untuk Model Ini",
+    "price": "Harga",
+    "inStock": "Ada Stok",
+    "outOfStock": "Tiada Stok",
+    "newTag": "Baru",
+    "hotTag": "Popular",
+    "recommendedTag": "Disyorkan",
+    "sortLatest": "Terbaru",
+    "sortPriceLow": "Harga: Rendah ke Tinggi",
+    "sortPriceHigh": "Harga: Tinggi ke Rendah",
+    "sortPopular": "Paling Popular"
+  },
+  "cart": {
+    "title": "Troli Saya",
+    "empty": "Troli anda kosong",
+    "emptyHint": "Lihat koleksi sarung telefon kami",
+    "quantity": "Kuantiti",
+    "subtotal": "Subjumlah",
+    "total": "Jumlah",
+    "checkout": "Daftar Keluar",
+    "continueShopping": "Teruskan Membeli",
+    "remove": "Buang"
+  },
+  "checkout": {
+    "title": "Pengesahan Pesanan",
+    "shippingInfo": "Maklumat Penghantaran",
+    "fullName": "Nama Penuh",
+    "phone": "Nombor Telefon",
+    "address": "Alamat",
+    "city": "Bandar",
+    "state": "Negeri",
+    "postcode": "Poskod",
+    "region": "Kawasan Penghantaran",
+    "regionWM": "Semenanjung Malaysia",
+    "regionEM": "Malaysia Timur",
+    "orderSummary": "Ringkasan Pesanan",
+    "submitOrder": "Hantar Pesanan",
+    "paymentNotice": "Selepas menghantar, kami akan menghubungi anda melalui WhatsApp untuk mengesahkan pembayaran"
+  },
+  "footer": {
+    "about": "Tentang CaseArt",
+    "shipping": "Maklumat Penghantaran",
+    "afterSales": "Perkhidmatan Selepas Jualan",
+    "contact": "Hubungi Kami",
+    "copyright": "© 2026 CaseArt. Hak cipta terpelihara",
+    "langSwitch": "Bahasa"
+  },
+  "common": {
+    "loading": "Memuatkan...",
+    "error": "Gagal memuatkan",
+    "retry": "Cuba Semula",
+    "noData": "Tiada kandungan",
+    "search": "Cari",
+    "filter": "Tapis",
+    "clear": "Kosongkan",
+    "confirm": "Sahkan",
+    "cancel": "Batal",
+    "back": "Kembali",
+    "next": "Seterusnya",
+    "prev": "Sebelumnya"
+  },
+  "about": {
+    "title": "Tentang CaseArt",
+    "intro": "CaseArt ialah kedai sarung telefon berfokuskan reka bentuk untuk pengguna Malaysia. Kami memilih jenama pereka asli China, meliputi semua model telefon popular di Malaysia, menyediakan sarung telefon yang bergaya, berkualiti tinggi, dan mampu milik.",
+    "shippingTitle": "Penghantaran",
+    "shippingDesc": "Semua produk dihantar terus dari China ke Malaysia. Penghantaran ke Semenanjung Malaysia mengambil masa lebih kurang 7-12 hari bekerja, dan ke Malaysia Timur lebih kurang 10-15 hari bekerja.",
+    "afterSalesTitle": "Perkhidmatan Selepas Jualan",
+    "afterSalesDesc": "Jika anda menerima produk yang rosak, sila hubungi kami dalam masa 7 hari untuk pemulangan atau pertukaran.",
+    "noticeTitle": "Nota Pesanan",
+    "noticeDesc": "Sila sahkan model telefon anda sebelum membuat pesanan. Gambar produk diambil dalam keadaan sebenar; variasi warna sedikit mungkin berlaku disebabkan pencahayaan dan perbezaan paparan."
+  }
+}

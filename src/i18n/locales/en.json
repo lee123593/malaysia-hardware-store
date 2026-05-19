@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "code": "en",
+    "label": "English",
+    "labelEn": "English",
+    "flag": "🇬🇧"
+  },
+  "nav": {
+    "home": "Home",
+    "allProducts": "All Models",
+    "about": "About",
+    "cart": "Cart",
+    "checkout": "Checkout",
+    "contact": "Contact"
+  },
+  "home": {
+    "heroTitle": "Design Phone Cases Only",
+    "heroSubtitle": "Original Chinese Designs · All Malaysian Models · Stylish & Affordable",
+    "ctaShopNow": "Shop Now",
+    "ctaViewModels": "Find My Model",
+    "featuresTitle": "Why Choose Us",
+    "featureSource": "Original Chinese Designs",
+    "featureModels": "All Popular Malaysian Models",
+    "featurePrice": "Affordable & Stylish",
+    "featureShipping": "Delivery Across Malaysia",
+    "hotModels": "Popular Models",
+    "newArrivals": "New Arrivals",
+    "bestSellers": "Best Sellers",
+    "viewAll": "View All"
+  },
+  "product": {
+    "addToCart": "Add to Cart",
+    "buyNow": "Buy Now",
+    "compatibleModels": "Compatible Models",
+    "material": "Material",
+    "style": "Style",
+    "shippingInfo": "Shipping Info",
+    "relatedProducts": "More for This Model",
+    "price": "Price",
+    "inStock": "In Stock",
+    "outOfStock": "Out of Stock",
+    "newTag": "New",
+    "hotTag": "Hot",
+    "recommendedTag": "Recommended",
+    "sortLatest": "Latest",
+    "sortPriceLow": "Price: Low to High",
+    "sortPriceHigh": "Price: High to Low",
+    "sortPopular": "Most Popular"
+  },
+  "cart": {
+    "title": "My Cart",
+    "empty": "Your cart is empty",
+    "emptyHint": "Browse our phone case collection",
+    "quantity": "Qty",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "checkout": "Checkout",
+    "continueShopping": "Continue Shopping",
+    "remove": "Remove"
+  },
+  "checkout": {
+    "title": "Order Confirmation",
+    "shippingInfo": "Shipping Information",
+    "fullName": "Full Name",
+    "phone": "Phone Number",
+    "address": "Address",
+    "city": "City",
+    "state": "State",
+    "postcode": "Postcode",
+    "region": "Shipping Region",
+    "regionWM": "West Malaysia",
+    "regionEM": "East Malaysia",
+    "orderSummary": "Order Summary",
+    "submitOrder": "Place Order",
+    "paymentNotice": "After submitting, we will contact you via WhatsApp to confirm payment"
+  },
+  "footer": {
+    "about": "About CaseArt",
+    "shipping": "Shipping Info",
+    "afterSales": "After Sales",
+    "contact": "Contact Us",
+    "copyright": "© 2026 CaseArt. All rights reserved",
+    "langSwitch": "Language"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Failed to load",
+    "retry": "Retry",
+    "noData": "No content",
+    "search": "Search",
+    "filter": "Filter",
+    "clear": "Clear",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "back": "Back",
+    "next": "Next",
+    "prev": "Previous"
+  },
+  "about": {
+    "title": "About CaseArt",
+    "intro": "CaseArt is a design-focused phone case store made for Malaysian users. We curate original Chinese designer brands, covering all popular phone models in Malaysia, delivering stylish, high-quality, and affordable cases to every customer.",
+    "shippingTitle": "Shipping",
+    "shippingDesc": "All products ship directly from China to Malaysia. Delivery to West Malaysia takes approximately 7-12 working days, and to East Malaysia approximately 10-15 working days.",
+    "afterSalesTitle": "After-Sales Service",
+    "afterSalesDesc": "If you receive a defective product, please contact us within 7 days for return or exchange.",
+    "noticeTitle": "Ordering Notes",
+    "noticeDesc": "Please confirm your phone model before ordering. Product photos are taken in real conditions; slight color variations may occur due to lighting and display differences."
+  }
+}

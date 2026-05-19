@@ -1,0 +1,69 @@
+{
+  "nav": {
+    "home": { "zh": "首页", "en": "Home", "ms": "Utama" },
+    "allProducts": { "zh": "全部商品", "en": "All Products", "ms": "Semua Produk" },
+    "cart": { "zh": "购物车", "en": "Cart", "ms": "Troli" },
+    "about": { "zh": "关于我们", "en": "About Us", "ms": "Tentang Kami" },
+    "search": { "zh": "搜索手机型号", "en": "Search Phone Model", "ms": "Cari Model Telefon" }
+  },
+  "home": {
+    "bannerTitle": { "zh": "只为设计感手机壳", "en": "Design Phone Cases Only", "ms": "Sarung Telefon Berreka Bentuk Sahaja" },
+    "bannerSubtitle": { "zh": "中国原创设计 · 全机型适配 · 高性价比 · 直送马来西亚", "en": "Original Chinese Designs · All Models · Affordable · Ship to Malaysia", "ms": "Rekaan Asli China · Semua Model · Mampu Milik · Hantar ke Malaysia" },
+    "bannerButton": { "zh": "立即选购", "en": "Shop Now", "ms": "Beli Sekarang" },
+    "sellingPoint1Title": { "zh": "中国货源", "en": "China Sourced", "ms": "Sumber China" },
+    "sellingPoint1Desc": { "zh": "精选中国原创设计款式", "en": "Curated original Chinese designs", "ms": "Rekaan asli China terpilih" },
+    "sellingPoint2Title": { "zh": "海量机型", "en": "All Models", "ms": "Semua Model" },
+    "sellingPoint2Desc": { "zh": "覆盖马来西亚全热门手机型号", "en": "Covers all popular phones in Malaysia", "ms": "Meliputi semua telefon popular di Malaysia" },
+    "sellingPoint3Title": { "zh": "低价高颜值", "en": "Affordable & Stylish", "ms": "Mampu Milik & Bergaya" },
+    "sellingPoint3Desc": { "zh": "高性价比，学生也能轻松入手", "en": "Great value, student-friendly prices", "ms": "Nilai hebat, harga mesra pelajar" },
+    "sellingPoint4Title": { "zh": "全马直送", "en": "Malaysia-Wide Delivery", "ms": "Penghantaran Seluruh Malaysia" },
+    "sellingPoint4Desc": { "zh": "西马/东马均可送达", "en": "Shipping to West & East Malaysia", "ms": "Penghantaran ke Semenanjung & Malaysia Timur" },
+    "hotModelsTitle": { "zh": "热门机型 · 一键直达", "en": "Popular Models · Quick Access", "ms": "Model Popular · Akses Pantas" },
+    "newProductsTitle": { "zh": "新品上架", "en": "New Arrivals", "ms": "Kedatangan Baru" },
+    "hotProductsTitle": { "zh": "热销推荐", "en": "Best Sellers", "ms": "Jualan Terlaris" },
+    "viewAll": { "zh": "查看全部", "en": "View All", "ms": "Lihat Semua" }
+  },
+  "product": {
+    "addToCart": { "zh": "加入购物车", "en": "Add to Cart", "ms": "Tambah ke Troli" },
+    "buyNow": { "zh": "立即购买", "en": "Buy Now", "ms": "Beli Sekarang" },
+    "modelCompatible": { "zh": "适配机型", "en": "Compatible Model", "ms": "Model Serasi" },
+    "inStock": { "zh": "现货", "en": "In Stock", "ms": "Ada Stok" },
+    "outOfStock": { "zh": "缺货", "en": "Out of Stock", "ms": "Tiada Stok" },
+    "newTag": { "zh": "新品", "en": "NEW", "ms": "BARU" },
+    "hotTag": { "zh": "热销", "en": "HOT", "ms": "TERLARIS" },
+    "relatedProducts": { "zh": "同型号其他款式", "en": "Other Styles For This Model", "ms": "Gaya Lain Untuk Model Ini" },
+    "description": { "zh": "商品描述", "en": "Description", "ms": "Penerangan" },
+    "shippingInfo": { "zh": "发货说明", "en": "Shipping Info", "ms": "Maklumat Penghantaran" }
+  },
+  "cart": {
+    "title": { "zh": "购物车", "en": "Shopping Cart", "ms": "Troli Beli-belah" },
+    "empty": { "zh": "购物车是空的", "en": "Your cart is empty", "ms": "Troli anda kosong" },
+    "subtotal": { "zh": "小计", "en": "Subtotal", "ms": "Subjumlah" },
+    "total": { "zh": "总计", "en": "Total", "ms": "Jumlah" },
+    "checkout": { "zh": "去结算", "en": "Checkout", "ms": "Daftar Keluar" },
+    "remove": { "zh": "移除", "en": "Remove", "ms": "Buang" }
+  },
+  "checkout": {
+    "title": { "zh": "结算下单", "en": "Checkout", "ms": "Daftar Keluar" },
+    "customerName": { "zh": "收货人姓名", "en": "Recipient Name", "ms": "Nama Penerima" },
+    "phone": { "zh": "联系电话", "en": "Phone Number", "ms": "Nombor Telefon" },
+    "address": { "zh": "收货地址", "en": "Delivery Address", "ms": "Alamat Penghantaran" },
+    "region": { "zh": "配送地区", "en": "Shipping Region", "ms": "Kawasan Penghantaran" },
+    "westMalaysia": { "zh": "西马", "en": "West Malaysia", "ms": "Semenanjung Malaysia" },
+    "eastMalaysia": { "zh": "东马", "en": "East Malaysia", "ms": "Malaysia Timur" },
+    "submitOrder": { "zh": "提交订单", "en": "Place Order", "ms": "Hantar Pesanan" },
+    "orderSuccess": { "zh": "下单成功！", "en": "Order Placed!", "ms": "Pesanan Dihantar!" }
+  },
+  "footer": {
+    "copyright": { "zh": "© 2026 CaseArt. 版权所有", "en": "© 2026 CaseArt. All rights reserved.", "ms": "© 2026 CaseArt. Hak cipta terpelihara." },
+    "shipping": { "zh": "配送说明", "en": "Shipping Info", "ms": "Maklumat Penghantaran" },
+    "afterSales": { "zh": "售后服务", "en": "After Sales", "ms": "Selepas Jualan" },
+    "contact": { "zh": "联系我们", "en": "Contact Us", "ms": "Hubungi Kami" }
+  },
+  "common": {
+    "language": { "zh": "语言", "en": "Language", "ms": "Bahasa" },
+    "currencySymbol": { "zh": "RM", "en": "RM", "ms": "RM" },
+    "loading": { "zh": "加载中...", "en": "Loading...", "ms": "Memuatkan..." },
+    "noData": { "zh": "暂无数据", "en": "No Data", "ms": "Tiada Data" }
+  }
+}

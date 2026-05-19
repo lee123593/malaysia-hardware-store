@@ -1,0 +1,154 @@
+/* ============================================================
+   全局入口样式
+   按层级顺序导入所有样式文件
+   ============================================================ */
+
+@import './reset.css';
+@import './variables.css';
+@import './animations.css';
+@import './responsive.css';
+
+/* ======== Tailwind 指令 ======== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Tailwind 层扩展 — 全局复用样式
+   ============================================================ */
+
+@layer base {
+  body {
+    @apply bg-white text-surface-dark font-sans antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+}
+
+@layer components {
+  /* ======== 克莱因蓝主按钮 ======== */
+  .btn-primary {
+    @apply inline-flex items-center justify-center;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: 12px 28px;
+    font-weight: 600;
+    transition:
+      transform var(--duration-fast) var(--ease-out),
+      box-shadow var(--duration-fast) var(--ease-out),
+      background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .btn-primary:hover {
+    transform: scale(1.04);
+    box-shadow: var(--shadow-button);
+    background-color: var(--color-primary-light);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+
+  /* ======== 白色描边按钮 ======== */
+  .btn-outline {
+    @apply inline-flex items-center justify-center;
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    padding: 10px 26px;
+    font-weight: 600;
+    transition:
+      transform var(--duration-fast) var(--ease-out),
+      background-color var(--duration-fast) var(--ease-out),
+      color var(--duration-fast) var(--ease-out);
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transform: scale(1.04);
+  }
+
+  .btn-outline:active {
+    transform: scale(0.98);
+  }
+
+  /* ======== 商品卡片 ======== */
+  .card-product {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition:
+      transform var(--duration-normal) var(--ease-out),
+      box-shadow var(--duration-normal) var(--ease-out);
+  }
+
+  .card-product:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* ======== 区块标题 ======== */
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-soft-black);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  @media (min-width: 768px) {
+    .section-title {
+      font-size: 2rem;
+    }
+  }
+
+  /* ======== 顶部语言切换器 ======== */
+  .lang-switcher {
+    @apply inline-flex items-center gap-1;
+    background-color: var(--color-light);
+    border-radius: var(--radius-full);
+    padding: 4px;
+  }
+
+  .lang-switcher button {
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-dark-gray);
+    transition:
+      background-color var(--duration-fast) var(--ease-out),
+      color var(--duration-fast) var(--ease-out);
+  }
+
+  .lang-switcher button.active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  .lang-switcher button:hover:not(.active) {
+    background-color: var(--color-gray);
+  }
+}
+
+@layer utilities {
+  /* 克莱因蓝渐变 */
+  .gradient-klein {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  }
+
+  /* 文字渐变 */
+  .text-gradient-klein {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}

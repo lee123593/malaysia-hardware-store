@@ -1,0 +1,200 @@
+{
+  "brands": [
+    {
+      "id": "apple",
+      "name": "Apple",
+      "nameZh": "苹果",
+      "order": 1,
+      "models": [
+        { "id": "iphone-16-pro-max", "name": "iPhone 16 Pro Max", "screenSize": "6.9\"", "year": 2024, "hot": true, "order": 1 },
+        { "id": "iphone-16-pro", "name": "iPhone 16 Pro", "screenSize": "6.3\"", "year": 2024, "hot": true, "order": 2 },
+        { "id": "iphone-16-plus", "name": "iPhone 16 Plus", "screenSize": "6.7\"", "year": 2024, "hot": true, "order": 3 },
+        { "id": "iphone-16", "name": "iPhone 16", "screenSize": "6.1\"", "year": 2024, "hot": true, "order": 4 },
+        { "id": "iphone-15-pro-max", "name": "iPhone 15 Pro Max", "screenSize": "6.7\"", "year": 2023, "hot": true, "order": 5 },
+        { "id": "iphone-15-pro", "name": "iPhone 15 Pro", "screenSize": "6.1\"", "year": 2023, "hot": true, "order": 6 },
+        { "id": "iphone-15-plus", "name": "iPhone 15 Plus", "screenSize": "6.7\"", "year": 2023, "hot": false, "order": 7 },
+        { "id": "iphone-15", "name": "iPhone 15", "screenSize": "6.1\"", "year": 2023, "hot": false, "order": 8 },
+        { "id": "iphone-14-pro-max", "name": "iPhone 14 Pro Max", "screenSize": "6.7\"", "year": 2022, "hot": false, "order": 9 },
+        { "id": "iphone-14-pro", "name": "iPhone 14 Pro", "screenSize": "6.1\"", "year": 2022, "hot": false, "order": 10 },
+        { "id": "iphone-14-plus", "name": "iPhone 14 Plus", "screenSize": "6.7\"", "year": 2022, "hot": false, "order": 11 },
+        { "id": "iphone-14", "name": "iPhone 14", "screenSize": "6.1\"", "year": 2022, "hot": false, "order": 12 },
+        { "id": "iphone-13-pro-max", "name": "iPhone 13 Pro Max", "screenSize": "6.7\"", "year": 2021, "hot": false, "order": 13 },
+        { "id": "iphone-13-pro", "name": "iPhone 13 Pro", "screenSize": "6.1\"", "year": 2021, "hot": false, "order": 14 },
+        { "id": "iphone-13", "name": "iPhone 13", "screenSize": "6.1\"", "year": 2021, "hot": false, "order": 15 },
+        { "id": "iphone-13-mini", "name": "iPhone 13 mini", "screenSize": "5.4\"", "year": 2021, "hot": false, "order": 16 },
+        { "id": "iphone-12-pro-max", "name": "iPhone 12 Pro Max", "screenSize": "6.7\"", "year": 2020, "hot": false, "order": 17 },
+        { "id": "iphone-12-pro", "name": "iPhone 12 Pro", "screenSize": "6.1\"", "year": 2020, "hot": false, "order": 18 },
+        { "id": "iphone-12", "name": "iPhone 12", "screenSize": "6.1\"", "year": 2020, "hot": false, "order": 19 },
+        { "id": "iphone-12-mini", "name": "iPhone 12 mini", "screenSize": "5.4\"", "year": 2020, "hot": false, "order": 20 }
+      ]
+    },
+    {
+      "id": "samsung",
+      "name": "Samsung",
+      "nameZh": "三星",
+      "order": 2,
+      "models": [
+        { "id": "galaxy-s26-ultra", "name": "Galaxy S26 Ultra", "screenSize": "6.9\"", "year": 2026, "hot": true, "order": 1 },
+        { "id": "galaxy-s26-plus", "name": "Galaxy S26+", "screenSize": "6.7\"", "year": 2026, "hot": true, "order": 2 },
+        { "id": "galaxy-s26", "name": "Galaxy S26", "screenSize": "6.2\"", "year": 2026, "hot": true, "order": 3 },
+        { "id": "galaxy-s25-ultra", "name": "Galaxy S25 Ultra", "screenSize": "6.9\"", "year": 2025, "hot": true, "order": 4 },
+        { "id": "galaxy-s25-plus", "name": "Galaxy S25+", "screenSize": "6.7\"", "year": 2025, "hot": true, "order": 5 },
+        { "id": "galaxy-s25", "name": "Galaxy S25", "screenSize": "6.2\"", "year": 2025, "hot": false, "order": 6 },
+        { "id": "galaxy-s24-ultra", "name": "Galaxy S24 Ultra", "screenSize": "6.8\"", "year": 2024, "hot": true, "order": 7 },
+        { "id": "galaxy-s24-plus", "name": "Galaxy S24+", "screenSize": "6.7\"", "year": 2024, "hot": false, "order": 8 },
+        { "id": "galaxy-s24", "name": "Galaxy S24", "screenSize": "6.2\"", "year": 2024, "hot": false, "order": 9 },
+        { "id": "galaxy-s23-ultra", "name": "Galaxy S23 Ultra", "screenSize": "6.8\"", "year": 2023, "hot": false, "order": 10 },
+        { "id": "galaxy-z-fold-7", "name": "Galaxy Z Fold 7", "screenSize": "7.6\"", "year": 2026, "hot": true, "order": 11 },
+        { "id": "galaxy-z-fold-6", "name": "Galaxy Z Fold 6", "screenSize": "7.6\"", "year": 2024, "hot": true, "order": 12 },
+        { "id": "galaxy-z-flip-7", "name": "Galaxy Z Flip 7", "screenSize": "6.7\"", "year": 2026, "hot": true, "order": 13 },
+        { "id": "galaxy-z-flip-6", "name": "Galaxy Z Flip 6", "screenSize": "6.7\"", "year": 2024, "hot": true, "order": 14 },
+        { "id": "galaxy-a56", "name": "Galaxy A56", "screenSize": "6.5\"", "year": 2025, "hot": true, "order": 15 },
+        { "id": "galaxy-a55", "name": "Galaxy A55", "screenSize": "6.6\"", "year": 2024, "hot": true, "order": 16 },
+        { "id": "galaxy-a36", "name": "Galaxy A36", "screenSize": "6.6\"", "year": 2025, "hot": true, "order": 17 },
+        { "id": "galaxy-a35", "name": "Galaxy A35", "screenSize": "6.6\"", "year": 2024, "hot": true, "order": 18 },
+        { "id": "galaxy-a26", "name": "Galaxy A26", "screenSize": "6.5\"", "year": 2025, "hot": false, "order": 19 },
+        { "id": "galaxy-a25", "name": "Galaxy A25", "screenSize": "6.5\"", "year": 2024, "hot": false, "order": 20 },
+        { "id": "galaxy-a16", "name": "Galaxy A16", "screenSize": "6.7\"", "year": 2025, "hot": false, "order": 21 },
+        { "id": "galaxy-a15", "name": "Galaxy A15", "screenSize": "6.5\"", "year": 2024, "hot": false, "order": 22 },
+        { "id": "galaxy-m55", "name": "Galaxy M55", "screenSize": "6.7\"", "year": 2024, "hot": false, "order": 23 },
+        { "id": "galaxy-m35", "name": "Galaxy M35", "screenSize": "6.6\"", "year": 2024, "hot": false, "order": 24 }
+      ]
+    },
+    {
+      "id": "xiaomi",
+      "name": "Xiaomi",
+      "nameZh": "小米",
+      "order": 3,
+      "models": [
+        { "id": "xiaomi-15-ultra", "name": "Xiaomi 15 Ultra", "screenSize": "6.73\"", "year": 2025, "hot": true, "order": 1 },
+        { "id": "xiaomi-15", "name": "Xiaomi 15", "screenSize": "6.36\"", "year": 2025, "hot": true, "order": 2 },
+        { "id": "xiaomi-14-ultra", "name": "Xiaomi 14 Ultra", "screenSize": "6.73\"", "year": 2024, "hot": true, "order": 3 },
+        { "id": "xiaomi-14", "name": "Xiaomi 14", "screenSize": "6.36\"", "year": 2024, "hot": false, "order": 4 },
+        { "id": "redmi-note-14-pro-plus", "name": "Redmi Note 14 Pro+", "screenSize": "6.67\"", "year": 2025, "hot": true, "order": 5 },
+        { "id": "redmi-note-14-pro", "name": "Redmi Note 14 Pro", "screenSize": "6.67\"", "year": 2025, "hot": true, "order": 6 },
+        { "id": "redmi-note-14", "name": "Redmi Note 14", "screenSize": "6.67\"", "year": 2025, "hot": false, "order": 7 },
+        { "id": "redmi-note-13-pro-plus", "name": "Redmi Note 13 Pro+", "screenSize": "6.67\"", "year": 2024, "hot": true, "order": 8 },
+        { "id": "redmi-note-13-pro", "name": "Redmi Note 13 Pro", "screenSize": "6.67\"", "year": 2024, "hot": true, "order": 9 },
+        { "id": "redmi-note-13", "name": "Redmi Note 13", "screenSize": "6.67\"", "year": 2024, "hot": false, "order": 10 },
+        { "id": "redmi-14c", "name": "Redmi 14C", "screenSize": "6.88\"", "year": 2025, "hot": false, "order": 11 },
+        { "id": "poco-f7-pro", "name": "POCO F7 Pro", "screenSize": "6.67\"", "year": 2025, "hot": true, "order": 12 },
+        { "id": "poco-x7-pro", "name": "POCO X7 Pro", "screenSize": "6.67\"", "year": 2025, "hot": true, "order": 13 },
+        { "id": "poco-x6-pro", "name": "POCO X6 Pro", "screenSize": "6.67\"", "year": 2024, "hot": true, "order": 14 }
+      ]
+    },
+    {
+      "id": "realme",
+      "name": "realme",
+      "nameZh": "realme",
+      "order": 4,
+      "models": [
+        { "id": "realme-14-pro-plus", "name": "realme 14 Pro+", "screenSize": "6.7\"", "year": 2025, "hot": true, "order": 1 },
+        { "id": "realme-14-pro", "name": "realme 14 Pro", "screenSize": "6.7\"", "year": 2025, "hot": true, "order": 2 },
+        { "id": "realme-14x", "name": "realme 14x", "screenSize": "6.67\"", "year": 2025, "hot": true, "order": 3 },
+        { "id": "realme-14", "name": "realme 14", "screenSize": "6.67\"", "year": 2025, "hot": false, "order": 4 },
+        { "id": "realme-13-pro-plus", "name": "realme 13 Pro+", "screenSize": "6.7\"", "year": 2024, "hot": true, "order": 5 },
+        { "id": "realme-13-pro", "name": "realme 13 Pro", "screenSize": "6.7\"", "year": 2024, "hot": false, "order": 6 },
+        { "id": "realme-gt-7-pro", "name": "realme GT 7 Pro", "screenSize": "6.78\"", "year": 2025, "hot": true, "order": 7 },
+        { "id": "realme-c75", "name": "realme C75", "screenSize": "6.72\"", "year": 2025, "hot": false, "order": 8 },
+        { "id": "realme-c67", "name": "realme C67", "screenSize": "6.72\"", "year": 2024, "hot": false, "order": 9 }
+      ]
+    },
+    {
+      "id": "vivo",
+      "name": "vivo",
+      "nameZh": "vivo",
+      "order": 5,
+      "models": [
+        { "id": "vivo-v50", "name": "vivo V50", "screenSize": "6.77\"", "year": 2025, "hot": true, "order": 1 },
+        { "id": "vivo-v50-pro", "name": "vivo V50 Pro", "screenSize": "6.77\"", "year": 2025, "hot": true, "order": 2 },
+        { "id": "vivo-v40", "name": "vivo V40", "screenSize": "6.78\"", "year": 2024, "hot": true, "order": 3 },
+        { "id": "vivo-v40-pro", "name": "vivo V40 Pro", "screenSize": "6.78\"", "year": 2024, "hot": false, "order": 4 },
+        { "id": "vivo-x200-pro", "name": "vivo X200 Pro", "screenSize": "6.78\"", "year": 2025, "hot": true, "order": 5 },
+        { "id": "vivo-x200", "name": "vivo X200", "screenSize": "6.67\"", "year": 2025, "hot": true, "order": 6 },
+        { "id": "vivo-y100", "name": "vivo Y100", "screenSize": "6.67\"", "year": 2024, "hot": false, "order": 7 },
+        { "id": "iqoo-13", "name": "iQOO 13", "screenSize": "6.82\"", "year": 2025, "hot": true, "order": 8 },
+        { "id": "iqoo-12", "name": "iQOO 12", "screenSize": "6.78\"", "year": 2024, "hot": true, "order": 9 },
+        { "id": "iqoo-z9-turbo", "name": "iQOO Z9 Turbo", "screenSize": "6.78\"", "year": 2024, "hot": true, "order": 10 },
+        { "id": "iqoo-z9", "name": "iQOO Z9", "screenSize": "6.67\"", "year": 2024, "hot": false, "order": 11 }
+      ]
+    },
+    {
+      "id": "oppo",
+      "name": "OPPO",
+      "nameZh": "OPPO",
+      "order": 6,
+      "models": [
+        { "id": "oppo-find-x8-pro", "name": "OPPO Find X8 Pro", "screenSize": "6.78\"", "year": 2025, "hot": true, "order": 1 },
+        { "id": "oppo-find-x8", "name": "OPPO Find X8", "screenSize": "6.59\"", "year": 2025, "hot": true, "order": 2 },
+        { "id": "oppo-reno-14-pro", "name": "OPPO Reno 14 Pro", "screenSize": "6.7\"", "year": 2025, "hot": true, "order": 3 },
+        { "id": "oppo-reno-14", "name": "OPPO Reno 14", "screenSize": "6.7\"", "year": 2025, "hot": true, "order": 4 },
+        { "id": "oppo-reno-12-pro", "name": "OPPO Reno 12 Pro", "screenSize": "6.7\"", "year": 2024, "hot": true, "order": 5 },
+        { "id": "oppo-a5-pro", "name": "OPPO A5 Pro", "screenSize": "6.7\"", "year": 2025, "hot": false, "order": 6 },
+        { "id": "oppo-a3-pro", "name": "OPPO A3 Pro", "screenSize": "6.7\"", "year": 2024, "hot": false, "order": 7 },
+        { "id": "oneplus-13", "name": "OnePlus 13", "screenSize": "6.82\"", "year": 2025, "hot": true, "order": 8 },
+        { "id": "oneplus-13r", "name": "OnePlus 13R", "screenSize": "6.78\"", "year": 2025, "hot": true, "order": 9 },
+        { "id": "oneplus-nord-5", "name": "OnePlus Nord 5", "screenSize": "6.74\"", "year": 2025, "hot": false, "order": 10 }
+      ]
+    },
+    {
+      "id": "honor",
+      "name": "Honor",
+      "nameZh": "荣耀",
+      "order": 7,
+      "models": [
+        { "id": "honor-600-pro", "name": "Honor 600 Pro", "screenSize": "6.78\"", "year": 2025, "hot": true, "order": 1 },
+        { "id": "honor-600", "name": "Honor 600", "screenSize": "6.7\"", "year": 2025, "hot": true, "order": 2 },
+        { "id": "honor-600-lite", "name": "Honor 600 Lite", "screenSize": "6.7\"", "year": 2025, "hot": true, "order": 3 },
+        { "id": "honor-200-pro", "name": "Honor 200 Pro", "screenSize": "6.78\"", "year": 2024, "hot": true, "order": 4 },
+        { "id": "honor-200", "name": "Honor 200", "screenSize": "6.7\"", "year": 2024, "hot": false, "order": 5 },
+        { "id": "honor-x9c", "name": "Honor X9c", "screenSize": "6.78\"", "year": 2025, "hot": true, "order": 6 },
+        { "id": "honor-x9b", "name": "Honor X9b", "screenSize": "6.78\"", "year": 2024, "hot": true, "order": 7 },
+        { "id": "honor-magic7-pro", "name": "Honor Magic 7 Pro", "screenSize": "6.8\"", "year": 2025, "hot": true, "order": 8 }
+      ]
+    },
+    {
+      "id": "tecno",
+      "name": "Tecno",
+      "nameZh": "Tecno",
+      "order": 8,
+      "models": [
+        { "id": "tecno-camon-50-ultra", "name": "Tecno Camon 50 Ultra", "screenSize": "6.8\"", "year": 2025, "hot": true, "order": 1 },
+        { "id": "tecno-camon-50-pro", "name": "Tecno Camon 50 Pro", "screenSize": "6.8\"", "year": 2025, "hot": true, "order": 2 },
+        { "id": "tecno-camon-50", "name": "Tecno Camon 50", "screenSize": "6.8\"", "year": 2025, "hot": false, "order": 3 },
+        { "id": "tecno-camon-40-pro", "name": "Tecno Camon 40 Pro", "screenSize": "6.78\"", "year": 2024, "hot": true, "order": 4 },
+        { "id": "tecno-spark-30-pro", "name": "Tecno Spark 30 Pro", "screenSize": "6.78\"", "year": 2025, "hot": false, "order": 5 },
+        { "id": "tecno-spark-30", "name": "Tecno Spark 30", "screenSize": "6.78\"", "year": 2025, "hot": false, "order": 6 },
+        { "id": "tecno-phantom-v2", "name": "Tecno Phantom V2 Fold", "screenSize": "7.85\"", "year": 2025, "hot": true, "order": 7 },
+        { "id": "tecno-pova-6-pro", "name": "Tecno Pova 6 Pro", "screenSize": "6.78\"", "year": 2024, "hot": false, "order": 8 }
+      ]
+    },
+    {
+      "id": "google",
+      "name": "Google Pixel",
+      "nameZh": "Google Pixel",
+      "order": 9,
+      "models": [
+        { "id": "pixel-9-pro-xl", "name": "Pixel 9 Pro XL", "screenSize": "6.8\"", "year": 2024, "hot": false, "order": 1 },
+        { "id": "pixel-9-pro", "name": "Pixel 9 Pro", "screenSize": "6.3\"", "year": 2024, "hot": false, "order": 2 },
+        { "id": "pixel-9", "name": "Pixel 9", "screenSize": "6.3\"", "year": 2024, "hot": false, "order": 3 },
+        { "id": "pixel-8-pro", "name": "Pixel 8 Pro", "screenSize": "6.7\"", "year": 2023, "hot": false, "order": 4 }
+      ]
+    },
+    {
+      "id": "huawei",
+      "name": "HUAWEI",
+      "nameZh": "华为",
+      "order": 10,
+      "models": [
+        { "id": "huawei-pura-80-ultra", "name": "HUAWEI Pura 80 Ultra", "screenSize": "6.8\"", "year": 2025, "hot": true, "order": 1 },
+        { "id": "huawei-pura-80-pro", "name": "HUAWEI Pura 80 Pro", "screenSize": "6.8\"", "year": 2025, "hot": true, "order": 2 },
+        { "id": "huawei-pura-80", "name": "HUAWEI Pura 80", "screenSize": "6.6\"", "year": 2025, "hot": false, "order": 3 },
+        { "id": "huawei-pura-70-ultra", "name": "HUAWEI Pura 70 Ultra", "screenSize": "6.8\"", "year": 2024, "hot": false, "order": 4 },
+        { "id": "huawei-mate-70-pro", "name": "HUAWEI Mate 70 Pro", "screenSize": "6.9\"", "year": 2024, "hot": false, "order": 5 },
+        { "id": "huawei-nova-14-pro", "name": "HUAWEI nova 14 Pro", "screenSize": "6.7\"", "year": 2025, "hot": false, "order": 6 }
+      ]
+    }
+  ],
+  "totalBrands": 10,
+  "totalModels": 102
+}

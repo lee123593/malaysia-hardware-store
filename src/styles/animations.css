@@ -1,0 +1,132 @@
+/* ============================================================
+   全局微动效系统
+   统一按钮、卡片、导航、页面过渡动画
+   ============================================================ */
+
+/* ======== 按钮悬浮：缩放 + 光影 + 色变 ======== */
+@keyframes btn-hover-scale {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.04); }
+}
+
+@keyframes btn-hover-glow {
+  0%   { box-shadow: 0 4px 14px rgba(0, 47, 167, 0.25); }
+  100% { box-shadow: 0 6px 24px rgba(0, 47, 167, 0.40); }
+}
+
+/* ======== 卡片悬浮：上浮 + 阴影加深 ======== */
+@keyframes card-float-up {
+  0%   { transform: translateY(0); box-shadow: var(--shadow-card); }
+  100% { transform: translateY(-6px); box-shadow: var(--shadow-card-hover); }
+}
+
+/* ======== 渐显 ======== */
+@keyframes fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* ======== 渐隐 ======== */
+@keyframes fade-out {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ======== 从下渐显 + 上浮 ======== */
+@keyframes slide-up-fade {
+  0%   { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ======== 骨架屏闪烁 ======== */
+@keyframes skeleton-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ======== 导航吸顶渐显 ======== */
+@keyframes nav-slide-down {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* ======== 选中态脉冲 ======== */
+@keyframes select-pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* ======== 弹窗缩放进入 ======== */
+@keyframes modalIn {
+  0%   { opacity: 0; transform: scale(0.92) translateY(10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ============================================================
+   通用工具类 (可直接在组件中使用)
+   ============================================================ */
+
+.animate-fade-in {
+  animation: fade-in var(--duration-normal) var(--ease-out) forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up-fade var(--duration-normal) var(--ease-out) forwards;
+}
+
+/* 按钮基础悬浮效果 */
+.btn-hover-effect {
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+.btn-hover-effect:hover {
+  transform: scale(1.04);
+  box-shadow: var(--shadow-button);
+}
+
+.btn-hover-effect:active {
+  transform: scale(0.98);
+}
+
+/* 卡片基础悬浮效果 */
+.card-hover-effect {
+  transition:
+    transform var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* 骨架屏 */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-gray) 25%,
+    var(--color-light) 50%,
+    var(--color-gray) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* 页面过渡 */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-transition-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
+}

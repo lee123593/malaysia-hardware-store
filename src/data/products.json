@@ -1,0 +1,164 @@
+{
+  "products": [
+    {
+      "id": "p001",
+      "name": {
+        "zh": "克莱因极简艺术壳",
+        "en": "Klein Minimal Art Case",
+        "ms": "Sarung Seni Minimalis Klein"
+      },
+      "description": {
+        "zh": "克莱因蓝色调极简设计，采用高品质PC+TPU材质，轻薄防摔，手感极佳。",
+        "en": "Klein blue minimalist design, premium PC+TPU material, slim & protective with great grip.",
+        "ms": "Rekaan minimalis biru Klein, bahan PC+TPU premium, nipis & pelindung dengan cengkaman hebat."
+      },
+      "modelId": "iphone-16-pro-max",
+      "price": 35.90,
+      "originalPrice": 49.90,
+      "images": [
+        "/images/products/p001-1.jpg",
+        "/images/products/p001-2.jpg"
+      ],
+      "status": "active",
+      "isNew": true,
+      "isHot": true,
+      "stock": "in_stock",
+      "style": "minimalist",
+      "createdAt": "2026-05-01",
+      "order": 1
+    },
+    {
+      "id": "p002",
+      "name": {
+        "zh": "大理石纹理高级壳",
+        "en": "Marble Texture Premium Case",
+        "ms": "Sarung Premium Tekstur Marmar"
+      },
+      "description": {
+        "zh": "优雅大理石纹理设计，耐磨抗刮，自带高级感，适配多种风格。",
+        "en": "Elegant marble texture design, scratch-resistant, premium feel for any style.",
+        "ms": "Rekaan tekstur marmar yang elegan, tahan calar, rasa premium untuk sebarang gaya."
+      },
+      "modelId": "iphone-16-pro-max",
+      "price": 32.90,
+      "originalPrice": null,
+      "images": [
+        "/images/products/p002-1.jpg",
+        "/images/products/p002-2.jpg"
+      ],
+      "status": "active",
+      "isNew": false,
+      "isHot": true,
+      "stock": "in_stock",
+      "style": "elegant",
+      "createdAt": "2026-05-02",
+      "order": 2
+    },
+    {
+      "id": "p003",
+      "name": {
+        "zh": "透明防摔气囊壳",
+        "en": "Clear Airbag Protection Case",
+        "ms": "Sarung Pelindung Beg Udara Jelas"
+      },
+      "description": {
+        "zh": "高清透明不泛黄，四角气囊防摔，裸机手感，还原真机美感。",
+        "en": "HD clear non-yellowing, 4-corner airbag protection, bare-phone feel.",
+        "ms": "HD jelas tidak kuning, perlindungan beg udara 4 sudut, rasa telefon asli."
+      },
+      "modelId": "iphone-16-pro",
+      "price": 25.90,
+      "originalPrice": 35.90,
+      "images": [
+        "/images/products/p003-1.jpg"
+      ],
+      "status": "active",
+      "isNew": false,
+      "isHot": true,
+      "stock": "in_stock",
+      "style": "clear",
+      "createdAt": "2026-05-03",
+      "order": 3
+    },
+    {
+      "id": "p004",
+      "name": {
+        "zh": "中国风水墨画壳",
+        "en": "Chinese Ink Wash Painting Case",
+        "ms": "Sarung Lukisan Dakwat Cina"
+      },
+      "description": {
+        "zh": "中国传统水墨画风格，独特东方美学设计，哑光质感，文艺气质。",
+        "en": "Traditional Chinese ink wash style, unique oriental aesthetic, matte finish.",
+        "ms": "Gaya dakwat Cina tradisional, estetika oriental unik, kemasan matte."
+      },
+      "modelId": "iphone-15-pro-max",
+      "price": 38.90,
+      "originalPrice": null,
+      "images": [
+        "/images/products/p004-1.jpg",
+        "/images/products/p004-2.jpg"
+      ],
+      "status": "active",
+      "isNew": true,
+      "isHot": false,
+      "stock": "in_stock",
+      "style": "chinese",
+      "createdAt": "2026-05-04",
+      "order": 4
+    },
+    {
+      "id": "p005",
+      "name": {
+        "zh": "赛博朋克渐变壳",
+        "en": "Cyberpunk Gradient Case",
+        "ms": "Sarung Gradien Cyberpunk"
+      },
+      "description": {
+        "zh": "霓虹渐变色彩，赛博朋克风格，电镀工艺不掉色，潮酷个性之选。",
+        "en": "Neon gradient colors, cyberpunk style, electroplated non-fading, bold choice.",
+        "ms": "Warna gradien neon, gaya cyberpunk, penyaduran tidak luntur, pilihan berani."
+      },
+      "modelId": "galaxy-s26-ultra",
+      "price": 36.90,
+      "originalPrice": 45.90,
+      "images": [
+        "/images/products/p005-1.jpg"
+      ],
+      "status": "active",
+      "isNew": true,
+      "isHot": true,
+      "stock": "in_stock",
+      "style": "cyberpunk",
+      "createdAt": "2026-05-05",
+      "order": 5
+    },
+    {
+      "id": "p006",
+      "name": {
+        "zh": "日系和风樱花壳",
+        "en": "Japanese Sakura Case",
+        "ms": "Sarung Sakura Jepun"
+      },
+      "description": {
+        "zh": "唯美樱花图案搭配日系和风设计，温柔粉色系，少女心爆棚。",
+        "en": "Beautiful sakura pattern with Japanese design, soft pink tones, perfect for kawaii lovers.",
+        "ms": "Corak sakura cantik dengan rekaan Jepun, ton merah jambu lembut, sesuai untuk pencinta kawaii."
+      },
+      "modelId": "iphone-16",
+      "price": 29.90,
+      "originalPrice": null,
+      "images": [
+        "/images/products/p006-1.jpg",
+        "/images/products/p006-2.jpg"
+      ],
+      "status": "active",
+      "isNew": false,
+      "isHot": false,
+      "stock": "in_stock",
+      "style": "kawaii",
+      "createdAt": "2026-05-06",
+      "order": 6
+    }
+  ]
+}
